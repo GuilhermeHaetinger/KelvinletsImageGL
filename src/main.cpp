@@ -1,75 +1,13 @@
 #include "CImg.h"
 #include <GL/glew.h>
-#include <GL/glut.h>
 #include <GLFW/glfw3.h>
-#include <stdio.h>
 #include <iostream>
-#include <fstream>
-#include <string>
-#include <sstream>
 #include <assert.h>
+#include "../include/ShaderCompiler.h"
+#include "../include/Image.h"
 
 using namespace std;
 using namespace cimg_library;
-
-static string ParseShader(const string& filepath)
-{
-    ifstream stream(filepath);
-    if (stream.fail())
-    {
-        cout << "NONEXISTANT FILE : \'" << filepath << "\'!" << endl;
-    }
-
-    stringstream ss;
-    string line;
-    while (getline(stream, line))
-    {
-        ss << line << endl;
-    }
-    return ss.str();
-}
-
-static unsigned int CompiledShader(unsigned int type,
-                                   const string& source)
-{
-    unsigned int id = glCreateShader(type);
-    const char* src = source.c_str();
-    glShaderSource(id, 1, &src, nullptr);
-    glCompileShader(id);
-
-    int result;
-    glGetShaderiv(id, GL_COMPILE_STATUS, &result);
-
-    if (result == GL_FALSE)
-    {
-        int length;
-        glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
-        char* message = (char*)alloca(length * sizeof(char));
-        glGetShaderInfoLog(id, length, &length, message);
-
-        cout << "FAILED TO COMPILE SHADER : " << message << endl;
-    }
-
-    return id;
-}
-
-static unsigned int CreateShader(const string& vertexShader,
-                                 const string& fragmentShader)
-{
-    unsigned int program = glCreateProgram();
-    unsigned int vs = CompiledShader(GL_VERTEX_SHADER, vertexShader);
-    unsigned int fs = CompiledShader(GL_FRAGMENT_SHADER, fragmentShader);
-
-    glAttachShader(program, vs);
-    glAttachShader(program, fs);
-    glLinkProgram(program);
-    glValidateProgram(program);
-
-    glDeleteShader(vs);
-    glDeleteShader(fs);
-
-    return program;
-}
 
 void checkArgumentConsistency(int argc)
 {
@@ -117,6 +55,13 @@ GLFWwindow* initContextAndLibraries(int width,
 int main(int argc, char* argv[])
 {
     checkArgumentConsistency(argc);
+
+    Image img(argv[1]);
+
+    GLfloat * pos;
+    pos = img.getPosition(256, 256);
+    cout << pos[0] << "    " << pos[1] << endl;
+
     CImg<unsigned char> image = loadImage(argv[1]);
     int width = image.width();
     int height = image.height();
@@ -124,30 +69,45 @@ int main(int argc, char* argv[])
     GLFWwindow* window;
     window = initContextAndLibraries(width, height, "Kelvinlets");
 
-    GLfloat vertices[10] = {
-        -0.5f,   0.0f,
-        -0.25f,  0.0f,
-         0.0f,   0.0f,
-        -0.5f,  -0.5f,
-        -0.25f, -0.5f
-    };
+    GLfloat * vertices = img.getVertices();
+    GLuint * indices = img.getIndices();
+    GLfloat * colors = img.getColors();
 
-    GLuint indices[5] = {
-        0, 3, 1, 4, 2
-    };
+    // GLfloat vertices[18] = {
+    //     -1.0f, 1.0f,
+    //      0.0f, 1.0f,
+    //      1.0f, 1.0f,
+    //     -1.0f, 0.0f,
+    //      0.0f, 0.0f,
+    //      1.0f, 0.0f,
+    //     -1.0f, -1.0f,
+    //      0.0f, -1.0f,
+    //      1.0f, -1.0f
+    // };
+    //
+    // GLuint indices[16] = {
+    //     0, 0, 3, 1, 4, 2, 5, 5, 3, 3, 6, 4, 7, 5, 8, 8
+    // };
+    //
+    // GLfloat colors[36] = {
+    //     1.0f, 0.0f, 0.0f,
+    //     1.0f, 0.0f, 0.0f,
+    //     1.0f, 0.0f, 0.0f,
+    //     0.0f, 1.0f, 0.0f,
+    //     0.0f, 1.0f, 0.0f,
+    //     0.0f, 1.0f, 0.0f,
+    //     0.0f, 0.0f, 1.0f,
+    //     0.0f, 0.0f, 1.0f,
+    //     0.0f, 0.0f, 1.0f
+    // };
 
-    GLfloat colors[20] = {
-        1.0f, 1.0f, 1.0f, 1.0f,
-        0.0f, 1.0f, 1.0f, 1.0f,
-        1.0f, 0.0f, 1.0f, 1.0f,
-        1.0f, 1.0f, 0.0f, 1.0f,
-        0.0f, 0.0f, 0.0f, 1.0f
-    };
+
 
     GLuint vertexBuffer;
     glGenBuffers(1, &vertexBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-    glBufferData(GL_ARRAY_BUFFER, 10 * sizeof(GLfloat),
+    glBufferData(GL_ARRAY_BUFFER,
+                 img.getNumOfVertices() * 2 * sizeof(GLfloat),
                  vertices, GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), 0);
@@ -156,16 +116,18 @@ int main(int argc, char* argv[])
     GLuint indexBuffer;
     glGenBuffers(1, &indexBuffer);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, 5 * sizeof(GLuint),
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER,
+                 img.getNumOfIndices() * sizeof(GLuint),
                  indices, GL_STATIC_DRAW);
 
     GLuint colorBuffer;
     glGenBuffers(1, &colorBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, colorBuffer);
-    glBufferData(GL_ARRAY_BUFFER, 5 * 4 * sizeof(GLuint),
+    glBufferData(GL_ARRAY_BUFFER,
+                 img.getNumOfVertices() * 3 * sizeof(GLuint),
                  colors, GL_STATIC_DRAW);
     glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), 0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
 
 
     string vs = ParseShader("./shaders/vertexShader.glsl");
@@ -182,12 +144,16 @@ int main(int argc, char* argv[])
     {
         glClear(GL_COLOR_BUFFER_BIT);
 
-        glDrawElements(GL_TRIANGLE_STRIP, 5, GL_UNSIGNED_INT, nullptr);
+        glDrawElements(GL_TRIANGLE_STRIP,
+                       img.getNumOfIndices(),
+                       GL_UNSIGNED_INT, nullptr);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
     glDeleteProgram(shader);
     glfwTerminate();
-    return 0;
+
+
+    exit(0);
 }
