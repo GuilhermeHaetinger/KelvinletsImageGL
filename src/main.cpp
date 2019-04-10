@@ -3,8 +3,10 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <assert.h>
+#include <stdlib.h>
 #include "../include/ShaderCompiler.h"
 #include "../include/Image.h"
+#include "../include/KelvinletsObject.h"
 
 using namespace std;
 using namespace cimg_library;
@@ -56,22 +58,18 @@ int main(int argc, char* argv[])
 {
     checkArgumentConsistency(argc);
 
-    Image img(argv[1]);
+    Image *img = new Image(argv[1]);
+    KelvinletsObject kelvin(img, atof(argv[2]), atof(argv[3]));
 
     GLfloat * pos;
-    pos = img.getPosition(256, 256);
-    cout << pos[0] << "    " << pos[1] << endl;
-
-    CImg<unsigned char> image = loadImage(argv[1]);
-    int width = image.width();
-    int height = image.height();
+    pos = img->getPosition(256, 256);
 
     GLFWwindow* window;
-    window = initContextAndLibraries(width, height, "Kelvinlets");
+    window = initContextAndLibraries(img->width, img->height, "Kelvinlets");
 
-    GLfloat * vertices = img.getVertices();
-    GLuint * indices = img.getIndices();
-    GLfloat * colors = img.getColors();
+    GLfloat * vertices = img->getVertices();
+    GLuint * indices = img->getIndices();
+    GLfloat * colors = img->getColors();
 
     // GLfloat vertices[18] = {
     //     -1.0f, 1.0f,
@@ -107,7 +105,7 @@ int main(int argc, char* argv[])
     glGenBuffers(1, &vertexBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
     glBufferData(GL_ARRAY_BUFFER,
-                 img.getNumOfVertices() * 2 * sizeof(GLfloat),
+                 img->getNumOfVertices() * 2 * sizeof(GLfloat),
                  vertices, GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), 0);
@@ -117,14 +115,14 @@ int main(int argc, char* argv[])
     glGenBuffers(1, &indexBuffer);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER,
-                 img.getNumOfIndices() * sizeof(GLuint),
+                 img->getNumOfIndices() * sizeof(GLuint),
                  indices, GL_STATIC_DRAW);
 
     GLuint colorBuffer;
     glGenBuffers(1, &colorBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, colorBuffer);
     glBufferData(GL_ARRAY_BUFFER,
-                 img.getNumOfVertices() * 3 * sizeof(GLuint),
+                 img->getNumOfVertices() * 3 * sizeof(GLuint),
                  colors, GL_STATIC_DRAW);
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
@@ -145,7 +143,7 @@ int main(int argc, char* argv[])
         glClear(GL_COLOR_BUFFER_BIT);
 
         glDrawElements(GL_TRIANGLE_STRIP,
-                       img.getNumOfIndices(),
+                       img->getNumOfIndices(),
                        GL_UNSIGNED_INT, nullptr);
 
         glfwSwapBuffers(window);

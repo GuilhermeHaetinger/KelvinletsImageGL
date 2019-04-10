@@ -26,6 +26,7 @@ private:
 
 public:
     Image(char* filepath);
+    Image(const Image& src);
     ~Image();
 
     int width;
@@ -41,6 +42,8 @@ public:
     int getNumOfIndices();
 
     void setPosition(int x, int y, GLfloat newX, GLfloat newY);
+
+    void copy(Image * src);
 };
 
 #endif

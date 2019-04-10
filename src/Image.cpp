@@ -14,20 +14,12 @@ void Image::initVertices()
   for(int i = 0; i < this->height; i++)
     for(int j = 0; j < this->width; j++)
     {
-      x = j*2 + i * this->width;
-      y = j*2 + 1 + i * this->width;
+      int index = 2 * (j + i * this->width);
+      x = index;
+      y = index + 1;
 
       v[x] = 2*((GLfloat)j/(this->width - 1)) - 1;
       v[y] = 2*((GLfloat)((this->height - 1) - i)/(this->height - 1)) - 1;
-
-      if(x == 131584 && y == 131585)
-      {
-        cout << v[x] << "  ::  " << v[y] << endl;
-        cout << x << " :::::: " << y << endl;
-        int testPos;
-        testPos = calculateVtxInitPos(j, i);
-        cout << testPos << "  !!!!!!!!!!  " << testPos + 1 << endl;
-      }
     }
 
     this->vertices = v;
@@ -54,36 +46,6 @@ void Image::initIndices()
     ind[count] = (i+1) * this->width + this->width - 1;
     count++;
   }
-    //
-    // this->numOfIndices = (this->height - 2) * ((2 * this->width)-1) + 2 * this->width;
-    // int size =  this->numOfIndices * sizeof(GLfloat);
-    // GLuint* ind = (GLuint*)malloc(size);
-    //
-    // int count = 0;
-    // for(int i = 0; i < this->height-1; i++)
-    // {
-    //   for(int j = 0; j < this->width; j++)
-    //   {
-    //     if(i % 2 != 0)
-    //     {
-    //       ind[count] = j + i * this->width;
-    //       ind[count + 1] = j + (i+1) * this->width;
-    //     }else{
-    //       ind[count] = this->width - 1 - j + i * this->width;
-    //       ind[count + 1] = this->width - 1 - j + (i+1) * this->width;
-    //     }
-    //     // cout << count << " : " << ind[count] << endl
-    //     // << count + 1 << " : " << ind[count+1]<<endl;
-    //     // getchar();
-    //     // count+=2;
-    //   }
-    // }
-
-  // for(int i = 0; i < this->numOfIndices; i++)
-  // {
-  //   cout << ind[i] << endl;
-  //   getchar();
-  // }
   this->indices = ind;
 }
 
@@ -95,13 +57,10 @@ void Image::initColors(CImg<unsigned char> image)
   for(int i = 0; i < this->height; i++)
     for(int j = 0; j < this->width; j++)
       {
-        c[j * 3 + i * 3 * this->width] = (GLfloat)image(j, i, 0, 0)/256;
-        c[j * 3 + 1 + i * 3 * this->width] = (GLfloat)image(j, i, 0, 1)/256;
-        c[j * 3 + 2 + i * 3 * this->width] = (GLfloat)image(j, i, 0, 2)/256;
-        // cout << j * 3 + i * this->width << endl
-        // << j * 3 + 1 + i * 3 * this->width << endl
-        // << j * 3 + 2 + i * 3 * this->width << endl;
-        // getchar();
+        int index = (j * 3) + (i * 3 * this->width);
+        c[index] =     (GLfloat)image(j, i, 0, 0)/256; // R
+        c[index + 1] = (GLfloat)image(j, i, 0, 1)/256; // G
+        c[index + 2] = (GLfloat)image(j, i, 0, 2)/256; // B
       }
       this->colors = c;
 }
@@ -126,13 +85,22 @@ Image::~Image()
   free(this->colors);
 }
 
+Image::Image(const Image& src)
+{
+  this->cimg_source = src.cimg_source;
+  this->width = src.width;
+  this->height = src.height;
+  this->initVertices();
+  this->initIndices();
+  this->initColors(this->cimg_source);
+}
+
 GLfloat* Image::getPosition(int x, int y)
 {
   int initPos = calculateVtxInitPos(x, y);
   GLfloat* returnVal = (GLfloat*)malloc(2*sizeof(GLfloat));
   returnVal[0] = this->vertices[initPos];
   returnVal[1] = this->vertices[initPos + 1];
-  cout << initPos << " -> " << returnVal[0] << "    ---------    " << returnVal[1] << endl;
   return returnVal;
 }
 
