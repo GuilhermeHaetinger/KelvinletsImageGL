@@ -28,4 +28,4 @@ Image.o:
 	$(CC) -o $(IMAGE_OBJECT) -c $(IMAGE) $(FLAGS)
 
 clean:
-	rm -f $(BIN)* kelvin
+	rm -f $(BIN)* */.#* kelvin

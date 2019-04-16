@@ -7,6 +7,7 @@
 #include <glm/mat2x2.hpp>
 #include <glm/mat4x4.hpp>
 #include <glm/gtc/constants.hpp>
+#include <glm/glm.hpp>
 
 using namespace glm;
 
