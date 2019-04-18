@@ -11,40 +11,11 @@ class Image
 private:
     CImg<unsigned char> cimg_source;
 
-    int numOfVertices;
-    int numOfIndices;
-
-    GLfloat* vertices;
-    GLuint* indices;
-    GLfloat* colors;
-
-    int calculateVtxInitPos(int x, int y);
-
-    void initVertices();
-    void initIndices();
-    void initColors(CImg<unsigned char> image);
-
 public:
     Image(char* filepath);
-    Image(const Image& src);
     ~Image();
 
-    int width;
-    int height;
-
-    GLfloat* getPosition(int x, int y);
-
-    GLfloat* getVertices();
-    GLuint* getIndices();
-    GLfloat* getColors();
-
-    int getNumOfVertices();
-    int getNumOfIndices();
-
-    void setPosition(int x, int y, GLfloat newX, GLfloat newY);
-    void setVertices(GLfloat * v);
-
-    void copy(Image * src);
+    vec3 getColor();
 };
 
 #endif
