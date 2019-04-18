@@ -76,7 +76,7 @@ void KelvinletsObject::grab(vec2 position, vec2 force, float brushSize)
         delta[0] *= retardationFunction(x);
         delta[1] *= retardationFunction(y);
 
-        GLfloat* buffpos = this->newImage->getPosition(j, i);
+        GLfloat* buffpos = this->checkpoint->getPosition(j, i);
         buffpos[0] = ((buffpos[0] + 1)/2) * this->src->width;
         buffpos[1] = ((buffpos[1] + 1)/2) * this->src->height;
         // if(i == 200 && j == 200)
