@@ -42,6 +42,7 @@ public:
     int getNumOfIndices();
 
     void setPosition(int x, int y, GLfloat newX, GLfloat newY);
+    void setVertices(GLfloat * v);
 
     void copy(Image * src);
 };

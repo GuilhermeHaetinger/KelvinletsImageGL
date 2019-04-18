@@ -32,8 +32,9 @@ class KelvinletsObject
   void reset();
   void resetFromCheckpoint();
   void setCheckpoint();
+  void setVertices(GLfloat * vertices);
 
-  void grab(vec2 position, vec2 force, float brushSize);
+  void grab(vec2 position, vec2 force, float brushSize, GLfloat * deposit);
   void grabRectangle(mat2 position, vec2 force, float brushSize);
 
   Image* getImage();

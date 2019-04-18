@@ -32,7 +32,7 @@ KelvinletsObject::KelvinletsObject(Image *source, float elasticShear, float pois
     this->a = 1 / (4 * pi<float>() * poissonRatio);
     this->b = this->a / (4 - 4 * elasticShear);
     this->c = 2 / (3 * this->a - 2 * this->b);
-
+    
     this->src = new Image(*source);
     this->newImage = new Image(*source);
     this->checkpoint = new Image(*source);
@@ -42,6 +42,11 @@ void KelvinletsObject::reset()
 {
   free(this->newImage);
   this->newImage = new Image(*(this->src));
+}
+
+void KelvinletsObject::setVertices(GLfloat * vertices)
+{
+  this->newImage->setVertices(vertices);
 }
 
 void KelvinletsObject::resetFromCheckpoint()
@@ -55,9 +60,10 @@ void KelvinletsObject::setCheckpoint(){
   this->checkpoint = new Image(*(this->newImage));
 }
 
-void KelvinletsObject::grab(vec2 position, vec2 force, float brushSize)
+void KelvinletsObject::grab(vec2 position, vec2 force, float brushSize, GLfloat * deposit)
 {
   vec2 delta;
+  int index;
   for(int i = 0; i < this->src->height; i++)
     for(int j = 0; j < this->src->width; j++)
       {
@@ -76,16 +82,18 @@ void KelvinletsObject::grab(vec2 position, vec2 force, float brushSize)
         delta[0] *= retardationFunction(x);
         delta[1] *= retardationFunction(y);
 
-        GLfloat* buffpos = this->checkpoint->getPosition(j, i);
+        GLfloat* buffpos = this->newImage->getPosition(j, i);
         buffpos[0] = ((buffpos[0] + 1)/2) * this->src->width;
         buffpos[1] = ((buffpos[1] + 1)/2) * this->src->height;
-        // if(i == 200 && j == 200)
-        //   cout << buffpos[0] << "  -----  " << buffpos[1] << endl; 
+
         delta += vec2(buffpos[0], buffpos[1]);
         delta[0] = 2 * (delta[0]/(this->src->width - 1)) - 1;
         delta[1] = 2 * (delta[1]/(this->src->height - 1)) - 1;
-      
-        this->newImage->setPosition(j, i, delta[0], delta[1]);
+
+        index = 2 * (j + i * this->newImage->width);
+        deposit[index] = delta[0];
+        deposit[index + 1] = delta[1];
+        //this->newImage->setPosition(j, i, delta[0], delta[1]);
       }
 }
 

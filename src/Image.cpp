@@ -117,3 +117,8 @@ void Image::setPosition(int x, int y, GLfloat newX, GLfloat newY)
   this->vertices[initPos] = newX;
   this->vertices[initPos + 1] = newY;
 }
+
+void Image::setVertices(GLfloat * v)
+{
+  memcpy(this->vertices, v, sizeof(GLfloat) * 2 * this->width * this->height);
+}
