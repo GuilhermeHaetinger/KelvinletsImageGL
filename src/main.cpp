@@ -11,6 +11,10 @@
 using namespace std;
 using namespace cimg_library;
 
+double initX, initY;
+double nextPosX, nextPosY;
+bool button_down;
+
 void checkArgumentConsistency(int argc)
 {
     if (argc != 4)
@@ -40,6 +44,8 @@ GLFWwindow* initContextAndLibraries(int width,
     if (!glfwInit()) exit(3);
     GLFWwindow* window;
     window = glfwCreateWindow(width, height, programName, NULL, NULL);
+    glfwSetWindowSizeLimits(window, width, height, width, height);
+
     if (!window)
     {
         glfwTerminate();
@@ -54,6 +60,28 @@ GLFWwindow* initContextAndLibraries(int width,
     return window;
 }
 
+static void mouse_callback(GLFWwindow* window, int button, int action, int mods)
+{
+  if (button == GLFW_MOUSE_BUTTON_LEFT) {
+    if(GLFW_PRESS == action)
+      {
+        button_down = true;
+        glfwGetCursorPos(window, &nextPosX, &nextPosY);
+        glfwGetCursorPos(window, &initX, &initY);
+      }
+    else if(GLFW_RELEASE == action)
+      button_down = false;
+  }
+}
+
+static void cursorPosCallback(GLFWwindow* window, double xpos, double ypos)
+{
+  if(button_down)
+  {
+    glfwGetCursorPos(window, &nextPosX, &nextPosY);
+  }
+}
+
 int main(int argc, char* argv[])
 {
     checkArgumentConsistency(argc);
@@ -61,52 +89,24 @@ int main(int argc, char* argv[])
     Image *img = new Image(argv[1]);
     KelvinletsObject kelvin(img, atof(argv[2]), atof(argv[3]));
 
-    GLfloat * pos;
-    pos = img->getPosition(256, 256);
+    //kelvin.grab(vec2(10, 10), vec2(100, 0), 100.0);
+    kelvin.grab(vec2(300, 300), vec2(-100, 0), 100.0);
 
     GLFWwindow* window;
     window = initContextAndLibraries(img->width, img->height, "Kelvinlets");
+    glfwSetMouseButtonCallback(window, mouse_callback);
+    glfwSetCursorPosCallback(window, cursorPosCallback);
 
-    GLfloat * vertices = img->getVertices();
-    GLuint * indices = img->getIndices();
-    GLfloat * colors = img->getColors();
-
-    // GLfloat vertices[18] = {
-    //     -1.0f, 1.0f,
-    //      0.0f, 1.0f,
-    //      1.0f, 1.0f,
-    //     -1.0f, 0.0f,
-    //      0.0f, 0.0f,
-    //      1.0f, 0.0f,
-    //     -1.0f, -1.0f,
-    //      0.0f, -1.0f,
-    //      1.0f, -1.0f
-    // };
-    //
-    // GLuint indices[16] = {
-    //     0, 0, 3, 1, 4, 2, 5, 5, 3, 3, 6, 4, 7, 5, 8, 8
-    // };
-    //
-    // GLfloat colors[36] = {
-    //     1.0f, 0.0f, 0.0f,
-    //     1.0f, 0.0f, 0.0f,
-    //     1.0f, 0.0f, 0.0f,
-    //     0.0f, 1.0f, 0.0f,
-    //     0.0f, 1.0f, 0.0f,
-    //     0.0f, 1.0f, 0.0f,
-    //     0.0f, 0.0f, 1.0f,
-    //     0.0f, 0.0f, 1.0f,
-    //     0.0f, 0.0f, 1.0f
-    // };
-
-
+    GLfloat * vertices = kelvin.getImage()->getVertices();
+    GLuint * indices = kelvin.getImage()->getIndices();
+    GLfloat * colors = kelvin.getImage()->getColors();
 
     GLuint vertexBuffer;
     glGenBuffers(1, &vertexBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
     glBufferData(GL_ARRAY_BUFFER,
                  img->getNumOfVertices() * 2 * sizeof(GLfloat),
-                 vertices, GL_STATIC_DRAW);
+                 vertices, GL_DYNAMIC_DRAW);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), 0);
 
@@ -123,7 +123,7 @@ int main(int argc, char* argv[])
     glBindBuffer(GL_ARRAY_BUFFER, colorBuffer);
     glBufferData(GL_ARRAY_BUFFER,
                  img->getNumOfVertices() * 3 * sizeof(GLuint),
-                 colors, GL_STATIC_DRAW);
+                 colors, GL_DYNAMIC_DRAW);
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
 
@@ -134,13 +134,33 @@ int main(int argc, char* argv[])
     unsigned int shader = CreateShader(vs, fs);
     glUseProgram(shader);
 
-    // int location = glGetUniformLocation(shader, "u_Color");
-    // assert(location != -1);
-    // glUniform4f(location, 0.2f, 0.3f, 0.8f, 1.0f);
-
+    int i = 0;
     while (!glfwWindowShouldClose(window))
     {
+        i++;
         glClear(GL_COLOR_BUFFER_BIT);
+        vec2 initPos;
+        vec2 nextPos;
+        if(button_down)
+          {
+            kelvin.resetFromCheckpoint();
+            nextPos = vec2(nextPosX, kelvin.getImage()->height - 1 - nextPosY);
+            initPos = vec2(initX, kelvin.getImage()->height - 1 - initY);
+            //cout << initX << ", " << kelvin.getImage()->height - 1 - initY << " --> " << nextPosX << ", " << kelvin.getImage()->height - 1 - nextPosY << endl;
+            kelvin.grab(initPos, nextPos - initPos, 200.);
+          }else{
+          kelvin.setCheckpoint();
+        }
+        glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, img->getNumOfVertices() * 2 * sizeof(GLfloat), kelvin.getImage()->getVertices());
+        glEnableVertexAttribArray(0);
+        //glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), 0);
+
+        glBindBuffer(GL_ARRAY_BUFFER, colorBuffer);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, img->getNumOfVertices() * 3 * sizeof(GLfloat), kelvin.getImage()->getColors());
+        glEnableVertexAttribArray(1);
+        //glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
+
 
         glDrawElements(GL_TRIANGLE_STRIP,
                        img->getNumOfIndices(),

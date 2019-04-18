@@ -65,7 +65,7 @@ void Image::initColors(CImg<unsigned char> image)
       this->colors = c;
 }
 
-int Image::calculateVtxInitPos(int x, int y){return 2 * x + y * this->width;}
+int Image::calculateVtxInitPos(int x, int y){return 2 * (x + y * this->width);}
 
 Image::Image(char* filepath)
 {

@@ -29,3 +29,6 @@ Image.o:
 
 clean:
 	rm -f $(BIN)* */.#* kelvin
+
+test: run
+	./kelvin ./testImages/mandrill.png 0.4 1.0

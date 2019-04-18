@@ -13,22 +13,30 @@ using namespace glm;
 
 class KelvinletsObject
 {
-private:
+ private:
   Image* src;
   Image* newImage;
+  Image* checkpoint;
   float a;
   float b;
   float c;
-  vec2 grabVariation(vec2 position, vec2 force, vec2 actualPosition, float brushSize);
+  vec2 grabVariation(vec2 position,
+                     vec2 force,
+                     vec2 actualPosition,
+                     float brushSize
+                     );
 
-public:
+ public:
   KelvinletsObject(Image* source, float elasticShear, float poissonRatio);
 
   void reset();
+  void resetFromCheckpoint();
+  void setCheckpoint();
 
   void grab(vec2 position, vec2 force, float brushSize);
   void grabRectangle(mat2 position, vec2 force, float brushSize);
-};
 
+  Image* getImage();
+};
 
 #endif
