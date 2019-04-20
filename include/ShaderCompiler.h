@@ -1,5 +1,6 @@
 #ifndef SHADER_COMPILER_HEADER
 #define SHADER_COMPILER_HEADER
+
 #include <GL/glew.h>
 #include <string>
 #include <sstream>

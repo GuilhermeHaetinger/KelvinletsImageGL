@@ -21,21 +21,25 @@ void KelvinletsObject::grab(vec2 position, vec2 force, float brushSize, GLfloat 
     for(int j = 0; j < this->width; j++)
       {
         delta = grabVariation(position, force, vec2(j, i), brushSize);
-
-        float * retardX;
-        float * retardY;
+        GLfloat * retardX = (GLfloat*) malloc(sizeof(GLfloat));
+        GLfloat * retardY = (GLfloat*) malloc(sizeof(GLfloat));
 
         retardInPosition(j, i, retardX, retardY);
 
-        delta[0] *= retardX;
-        delta[1] *= retardY;
+        // delta[0] *= *retardX;
+        //delta[1] *= *retardY;
+        
+        vec2 pos = vec2(j, this->height - 1 - i);//getPosition(this->width, src, j, i);
 
-        vec2 position = getPosition(this->width, src, j, i);
-
-        delta += position;
-        //delta[0] = 2 * (delta[0]/(this->width - 1)) - 1;
-        //delta[1] = 2 * (delta[1]/(this->height - 1)) - 1;
-
+        pos[0] = 2 * (pos[0]/(this->width - 1));
+        pos[1] = 2 * (pos[1]/(this->height - 1));
+        if(vec2(j, i) == position){
+          cout << delta[0] << " === " << delta[1] << endl << pos[0] << " ----- " << pos[1] << endl;
+          getchar();
+        }
+        delta[0] = 2 * (delta[0]/(this->width - 1));
+        delta[1] = 2 * (delta[1]/(this->height - 1));
+        delta += pos;
         setVerticesPosition(this->width, j, i, dest, delta);
       }
 }
@@ -58,14 +62,13 @@ vec2 KelvinletsObject::grabVariation(vec2 position,
     return this->c * brushSize * kelvinState * force;
 }
 
-int KelvinletsObject::calcVertexIndex(int width, int x, int y){return 2 * (x + y * width)}
+int KelvinletsObject::calcVertexIndex(int width, int x, int y){return 2 * (x + y * width);}
 
 vec2 KelvinletsObject::getPosition(int width, GLfloat * vertices, int x, int y)
 {
   int index = calcVertexIndex(width, x, y);
   vec2 position = vec2(vertices[index], vertices[index + 1]);
-  position[0] = ((position[0] + 1)/2) * this->width;
-  position[1] = ((position[1] + 1)/2) * this->height;
+  return position;
 }
 
 void KelvinletsObject::setVerticesPosition(int width, int x, int y, GLfloat * vertices, vec2 modif)
@@ -80,18 +83,18 @@ GLfloat KelvinletsObject::retardationFunction(float alpha)
   return (GLfloat)(1/(pow(2, 1/4))) * pow((float)cos(pi<float>() * alpha) + 1, (float)1/4);
 }
 
-void KelvinletsObject::retardInPosition(int x, int y, int width, int height, float * retardX, float * retardY)
+void KelvinletsObject::retardInPosition(int x, int y, GLfloat * retardX, GLfloat * retardY)
 {
-  int dx1 = j;
-  int dx2 = width - j - 1;
-  int dy1 = i;
-  int dy2 = height - i - 1;
+  int dx1 = x;
+  int dx2 = this->width - x - 1;
+  int dy1 = y;
+  int dy2 = this->height - y - 1;
 
   int dx = min(dx1, dx2);
   int dy = min(dy1, dy2);
 
-  float propX = (float) (2 * (float)(width / 2 - dx) / (float)width);
-  float propY = (float) (2 * (float)(height / 2 - dy) / (float)height);
+  float propX = (float) (2 * (float)(this->width / 2 - dx) / (float)this->width);
+  float propY = (float) (2 * (float)(this->height / 2 - dy) / (float)this->height);
 
   *retardX = retardationFunction(propX);
   *retardY = retardationFunction(propY);

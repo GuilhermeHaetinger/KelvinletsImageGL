@@ -2,6 +2,7 @@
 #define RENDERABLE_IMAGE_HEADER
 
 #include "../include/Image.h"
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 class RenderableImage
@@ -11,17 +12,37 @@ class RenderableImage
   GLuint * indices;
   GLfloat * colors;
 
+  GLuint vertexBuffer;
+  GLuint indexBuffer;
+  GLuint colorBuffer;
+
+  int width;
+  int height;
+
   void initVertices();
   void initIndices();
   void initColors(Image img);
 
  public:
-  RenderableImage(Image img);
+  RenderableImage(char * filepath);
 
   GLfloat * getVertices();
   GLuint * getIndices();
   GLfloat * getColors();
 
+  int getWidth();
+  int getHeight();
+
+  GLuint getVertexBuffer();
+  GLuint getIndexBuffer();
+  GLuint getColorBuffer();
+
+  int getNumOfVertices();
+  int getNumOfIndices();
+
+  void initBuffers();
+
+  void setVertices(GLfloat * newVertices);
 };
 
 #endif
