@@ -168,9 +168,10 @@ int main(int argc, char* argv[])
     while (!glfwWindowShouldClose(window))
     {
       i++;
+      //kelvin.grab(vec2(200, 200), vec2(i/100, 0), 50.0, renderableImage.getVertices(), test);    
       glClear(GL_COLOR_BUFFER_BIT);
 
-      kelvin.grab(vec2(200, 200), vec2(i, 0), 100.0, renderableImage.getVertices(), test);
+      // kelvin.grab(vec2(200, 200), vec2(i, 0), 100.0, renderableImage.getVertices(), test);
       //kelvin.grab(vec2(200, 200), vec2(-i/100, 0), 50.0, renderableImage.getVertices(), test);
         // if(button_down)
         //   {
