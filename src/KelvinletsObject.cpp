@@ -4,103 +4,47 @@ using namespace glm;
 using std::endl;
 using std::cout;
 
-//AUXILIAR FUNCTIONS
-
-
-GLfloat retardationFunction(float alpha)
-{
-  return (GLfloat)(1/(pow(2, 1/4))) * pow((float)cos(pi<float>() * alpha) + 1, (float)1/4);
-}
-
-void printVec(vec2 v){cout << "[" << v[0] << ", " << v[1] << "]"<< endl;}
-void printMat(mat2 m){
-  cout << "["
-       << (float)m[0][0] << ", " << (float)m[0][1] << endl
-       << (float)m[1][0] << ", " << (float)m[1][1]
-       << "]" << endl;
-}
-
-mat2 productWithTranspost(vec2 x)
-{
-  return mat2(x[0] * x[0], x[1] * x[0], x[0] * x[1], x[1] * x[1]);
-}
-
-/////////////////
-
-KelvinletsObject::KelvinletsObject(Image *source, float elasticShear, float poissonRatio)
+KelvinletsObject::KelvinletsObject(int width, int height, float elasticShear, float poissonRatio)
 {
     this->a = 1 / (4 * pi<float>() * poissonRatio);
     this->b = this->a / (4 - 4 * elasticShear);
     this->c = 2 / (3 * this->a - 2 * this->b);
-    
-    this->src = new Image(*source);
-    this->newImage = new Image(*source);
-    this->checkpoint = new Image(*source);
+    this->width = width;
+    this->height = height;
 }
 
-void KelvinletsObject::reset()
-{
-  free(this->newImage);
-  this->newImage = new Image(*(this->src));
-}
-
-void KelvinletsObject::setVertices(GLfloat * vertices)
-{
-  this->newImage->setVertices(vertices);
-}
-
-void KelvinletsObject::resetFromCheckpoint()
-{
-  free(this->newImage);
-  this->newImage = new Image(*(this->checkpoint));
-}
-
-void KelvinletsObject::setCheckpoint(){
-  free(this->checkpoint);
-  this->checkpoint = new Image(*(this->newImage));
-}
-
-void KelvinletsObject::grab(vec2 position, vec2 force, float brushSize, GLfloat * deposit)
+void KelvinletsObject::grab(vec2 position, vec2 force, float brushSize,
+                            GLfloat * src, GLfloat * dest, bool retard
+                            )
 {
   vec2 delta;
-  int index;
-  for(int i = 0; i < this->src->height; i++)
-    for(int j = 0; j < this->src->width; j++)
+  for(int i = 0; i < this->height; i++)
+    for(int j = 0; j < this->width; j++)
       {
-        delta = grabVariation(position, force, vec2(j, i), brushSize);
-        int dx1 = j;
-        int dx2 = this->src->width - j - 1;
-        int dy1 = i;
-        int dy2 = this->src->height - i - 1;
+        vec2 pos = getPosition(this->width, src, j, i);
+        delta = grabVariation(position, force, pos, brushSize);
 
-        int dx = min(dx1, dx2);
-        int dy = min(dy1, dy2);
+        if(retard)
+          {
+            GLfloat * retardX = (GLfloat*) malloc(sizeof(GLfloat));
+            GLfloat * retardY = (GLfloat*) malloc(sizeof(GLfloat));
+            retardInPosition(j, i, retardX, retardY);
+            delta[0] *= *retardX;
+            delta[1] *= *retardY;
+            free(retardX);
+            free(retardY);
+          }
 
-        float x = (float) (2 * (float)(this->src->width / 2 - dx) / (float)this->src->width);
-        float y = (float) (2 * (float)(this->src->height / 2 - dy) / (float)this->src->height);
+        delta += pos;
 
-        delta[0] *= retardationFunction(x);
-        delta[1] *= retardationFunction(y);
+        delta[0] = 2 * (delta[0]/(this->width)) - 1;
+        delta[1] = 2 * (delta[1]/(this->height)) - 1;
 
-        GLfloat* buffpos = this->newImage->getPosition(j, i);
-        buffpos[0] = ((buffpos[0] + 1)/2) * this->src->width;
-        buffpos[1] = ((buffpos[1] + 1)/2) * this->src->height;
-
-        delta += vec2(buffpos[0], buffpos[1]);
-        delta[0] = 2 * (delta[0]/(this->src->width - 1)) - 1;
-        delta[1] = 2 * (delta[1]/(this->src->height - 1)) - 1;
-
-        index = 2 * (j + i * this->newImage->width);
-        deposit[index] = delta[0];
-        deposit[index + 1] = delta[1];
-        //this->newImage->setPosition(j, i, delta[0], delta[1]);
+        setVerticesPosition(this->width, j, i, dest, delta);
       }
 }
 
-void KelvinletsObject::grabRectangle(mat2 position, vec2 force, float brushSize)
-{
-
-}
+void KelvinletsObject::grabRectangle(mat2 position, vec2 force, float brushSize){}
 
 vec2 KelvinletsObject::grabVariation(vec2 position,
                                      vec2 force,
@@ -118,4 +62,48 @@ vec2 KelvinletsObject::grabVariation(vec2 position,
     return this->c * brushSize * kelvinState * force;
 }
 
-Image* KelvinletsObject::getImage(){return this->newImage;}
+int KelvinletsObject::calcVertexIndex(int width, int x, int y){return 2 * (x + y * width);}
+
+vec2 KelvinletsObject::getPosition(int width, GLfloat * vertices, int x, int y)
+{
+  int index = calcVertexIndex(width, x, y);
+  vec2 position = vec2(vertices[index], vertices[index + 1]);
+  position[0] = (this->width) * (position[0] + 1)/2;
+  position[1] = (this->height) * (position[1] + 1)/2;
+  return position;
+}
+
+void KelvinletsObject::setVerticesPosition(int width, int x, int y, GLfloat * vertices, vec2 modif)
+{
+  int index = calcVertexIndex(width, x, y);
+  vertices[index] = modif[0];
+  vertices[index + 1] = modif[1];
+}
+
+GLfloat KelvinletsObject::retardationFunction(float alpha)
+{
+  return (GLfloat)(1/(pow(2, 1/4))) * pow((float)cos(pi<float>() * alpha) + 1, (float)1/4);
+}
+
+void KelvinletsObject::retardInPosition(int x, int y, GLfloat * retardX, GLfloat * retardY)
+{
+  int dx1 = x;
+  int dx2 = this->width - x - 1;
+  int dy1 = y;
+  int dy2 = this->height - y - 1;
+
+  int dx = min(dx1, dx2);
+  int dy = min(dy1, dy2);
+
+  float propX = (float) (2 * (float)(this->width / 2 - dx) / (float)this->width);
+  float propY = (float) (2 * (float)(this->height / 2 - dy) / (float)this->height);
+
+  *retardX = retardationFunction(propX);
+  *retardY = retardationFunction(propY);
+}
+
+mat2 KelvinletsObject::productWithTranspost(vec2 x)
+{
+  return mat2(x[0] * x[0], x[1] * x[0], x[0] * x[1], x[1] * x[1]);
+}
+
