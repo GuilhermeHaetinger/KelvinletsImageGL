@@ -71,9 +71,14 @@ RenderableImage::RenderableImage(char * filepath)
   this->initColors(img);
 }
 
-GLfloat * RenderableImage::getVertices(){return this->vertices;}
-GLuint * RenderableImage::getIndices(){return this->indices;}
-GLfloat * RenderableImage::getColors(){return this->colors;}
+void RenderableImage::getVertices(GLfloat * dest)
+{memcpy(dest, this->vertices, this->getNumOfVertices() * 2 * sizeof(GLfloat));}
+
+void RenderableImage::getIndices(GLuint * dest)
+{memcpy(dest, this->indices, this->getNumOfIndices() * sizeof(GLuint));}
+
+void RenderableImage::getColors(GLfloat * dest)
+{memcpy(dest, this->colors, this->getNumOfVertices() * 3 * sizeof(GLfloat));}
 
 GLuint RenderableImage::getVertexBuffer(){return this->vertexBuffer;}
 GLuint RenderableImage::getIndexBuffer(){return this->indexBuffer;}

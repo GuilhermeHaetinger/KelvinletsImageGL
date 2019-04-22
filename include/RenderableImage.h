@@ -26,9 +26,9 @@ class RenderableImage
  public:
   RenderableImage(char * filepath);
 
-  GLfloat * getVertices();
-  GLuint * getIndices();
-  GLfloat * getColors();
+  void getVertices(GLfloat * dest);
+  void getIndices(GLuint * dest);
+  void getColors(GLfloat * dest);
 
   int getWidth();
   int getHeight();

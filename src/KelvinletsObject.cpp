@@ -13,48 +13,33 @@ KelvinletsObject::KelvinletsObject(int width, int height, float elasticShear, fl
     this->height = height;
 }
 
-void KelvinletsObject::grab(vec2 position, vec2 force, float brushSize, GLfloat * src, GLfloat * dest)
+void KelvinletsObject::grab(vec2 position, vec2 force, float brushSize,
+                            GLfloat * src, GLfloat * dest, bool retard
+                            )
 {
   vec2 delta;
-  int index;
-
   for(int i = 0; i < this->height; i++)
     for(int j = 0; j < this->width; j++)
       {
         vec2 pos = getPosition(this->width, src, j, i);
-        if(i == 200 && j == 200)
-          cout << pos[0] << "   ===   " << pos[1] << endl;
         delta = grabVariation(position, force, pos, brushSize);
 
+        if(retard)
+          {
+            GLfloat * retardX = (GLfloat*) malloc(sizeof(GLfloat));
+            GLfloat * retardY = (GLfloat*) malloc(sizeof(GLfloat));
+            retardInPosition(j, i, retardX, retardY);
+            delta[0] *= *retardX;
+            delta[1] *= *retardY;
+            free(retardX);
+            free(retardY);
+          }
+
         delta += pos;
-        delta[0] += 2 * (delta[0]/(this->width)) - 1;
-        delta[1] += 2 * (delta[1]/(this->height)) - 1;
 
+        delta[0] = 2 * (delta[0]/(this->width)) - 1;
+        delta[1] = 2 * (delta[1]/(this->height)) - 1;
 
-        // if(vec2(j, i) == position){
-        //   cout << delta[0] << " ======== " << delta[1] << endl;
-        // getchar();
-        // }
-
-        // GLfloat * retardX = (GLfloat*) malloc(sizeof(GLfloat));
-        // GLfloat * retardY = (GLfloat*) malloc(sizeof(GLfloat));
-
-        // retardInPosition(j, i, retardX, retardY);
-
-        // delta[0] *= *retardX;
-        // delta[1] *= *retardY;
-
-        // vec2 pos = vec2(j, this->height - 1 - i);//getPosition(this->width, src, j, i);
-
-        // pos[0] = 2 * (pos[0]/(this->width - 1));
-        // pos[1] = 2 * (pos[1]/(this->height - 1));
-        // if(vec2(j, i) == position){
-        //   cout << delta[0] << " === " << delta[1] << endl << pos[0] << " ----- " << pos[1] << endl;
-        //   getchar();
-        // }
-        // delta[0] = 2 * (delta[0]/(this->width - 1));
-        // delta[1] = 2 * (delta[1]/(this->height - 1));
-        // delta += pos;
         setVerticesPosition(this->width, j, i, dest, delta);
       }
 }
@@ -83,8 +68,8 @@ vec2 KelvinletsObject::getPosition(int width, GLfloat * vertices, int x, int y)
 {
   int index = calcVertexIndex(width, x, y);
   vec2 position = vec2(vertices[index], vertices[index + 1]);
-  position[0] += (this->width) * (position[0] + 1)/2;
-  position[1] += this->height - ((this->height) * (position[1] + 1)/2);
+  position[0] = (this->width) * (position[0] + 1)/2;
+  position[1] = (this->height) * (position[1] + 1)/2;
   return position;
 }
 

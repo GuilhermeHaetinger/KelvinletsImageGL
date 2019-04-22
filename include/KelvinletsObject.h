@@ -29,7 +29,9 @@ class KelvinletsObject
  public:
   KelvinletsObject(int width, int height, float elasticShear, float poissonRatio);
 
-  void grab(vec2 position, vec2 force, float brushSize, GLfloat * src, GLfloat * dest);
+  void grab(vec2 position, vec2 force, float brushSize,
+            GLfloat * src, GLfloat * dest, bool retard
+            );
   void grabRectangle(mat2 position, vec2 force, float brushSize);
 };
 
