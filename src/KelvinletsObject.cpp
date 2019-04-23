@@ -95,8 +95,8 @@ void KelvinletsObject::retardInPosition(int x, int y, GLfloat * retardX, GLfloat
   int dx = min(dx1, dx2);
   int dy = min(dy1, dy2);
 
-  float propX = (float) (2 * (float)(this->width / 2 - dx) / (float)this->width);
-  float propY = (float) (2 * (float)(this->height / 2 - dy) / (float)this->height);
+  float propX = (float) (2 * (float)(this->width / 2.0f - dx) / (float)this->width);
+  float propY = (float) (2 * (float)(this->height / 2.0f - dy) / (float)this->height);
 
   *retardX = retardationFunction(propX);
   *retardY = retardationFunction(propY);

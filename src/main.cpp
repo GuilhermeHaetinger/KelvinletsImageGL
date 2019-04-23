@@ -31,6 +31,9 @@ int main(int argc, char* argv[])
     GLFWwindow * window = init(renderableImage, vertex, fragment, "Kelvinlets");
     int width = renderableImage.getWidth();
     int height = renderableImage.getHeight();
+
+    cout << width << "     " << height << endl;
+
     KelvinletsObject kelvin (width, height, atof(argv[2]), atof(argv[3]));
 
     vec2 * initialPosition = (vec2*) malloc(sizeof(vec2));
