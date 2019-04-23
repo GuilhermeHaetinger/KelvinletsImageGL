@@ -39,8 +39,8 @@ int main(int argc, char* argv[])
     bool * retard = (bool*) malloc(sizeof(bool));
     float * brushSize  = (float*) malloc(sizeof(float));
 
-    GLfloat * vertices = (GLfloat *)malloc(512 * 512 * 2 * sizeof(GLfloat));
-    GLfloat * newVertices = (GLfloat *)malloc(512 * 512 * 2 * sizeof(GLfloat));
+    GLfloat * vertices = (GLfloat *)malloc(width * height * 2 * sizeof(GLfloat));
+    GLfloat * newVertices = (GLfloat *)malloc(width * height * 2 * sizeof(GLfloat));
     renderableImage.getVertices(vertices);
     renderableImage.getVertices(newVertices);
 
