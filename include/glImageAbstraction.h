@@ -9,7 +9,8 @@
 
 GLFWwindow * init(RenderableImage rend,
                   string pathToVertexShader, string pathToFragmentShader,
-                  const char * programName
+                  const char * programName,
+                  float a, float b, float c
                   );
 
 void reRender(GLFWwindow * window, RenderableImage rend, GLfloat * vertices);
