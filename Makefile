@@ -3,6 +3,7 @@ SRC=./src/
 BIN=./bin/
 MAIN=$(SRC)main.cpp
 MAIN_OBJECT=$(BIN)main.o
+KELVIN=./kelvin
 SHADER_COMPILER=$(SRC)ShaderCompiler.cpp
 SHADER_COMPILER_OBJECT=$(BIN)ShaderCompiler.o
 IMAGE=$(SRC)Image.cpp
@@ -14,33 +15,32 @@ GL_ABSTRACTION_OBJECT=$(BIN)glImageAbstraction.o
 KELVINLETS=$(SRC)KelvinletsObject.cpp
 KELVINLETS_OBJECT=$(BIN)KelvinletsObject.o
 
-
-
 FLAGS=-lpthread -lX11 -std=c++11 -lglfw -lGLEW -lglut -lGL
 
-run: ShaderCompiler.o Image.o KelvinletsObject.o RenderableImage.o glImageAbstraction.o main.o
+
+$(KELVIN): $(SHADER_COMPILER_OBJECT) $(IMAGE_OBJECT) $(KELVINLETS_OBJECT) $(RENDERABLE_IMAGE_OBJECT) $(GL_ABSTRACTION_OBJECT) $(MAIN_OBJECT)
 	$(CC) -o kelvin $(MAIN_OBJECT) $(SHADER_COMPILER_OBJECT) $(IMAGE_OBJECT) $(RENDERABLE_IMAGE_OBJECT) $(GL_ABSTRACTION_OBJECT) $(KELVINLETS_OBJECT) $(FLAGS)
 
-main.o:
+$(MAIN_OBJECT): $(MAIN)
 	$(CC) -o $(MAIN_OBJECT) -c $(MAIN) $(FLAGS)
 
-ShaderCompiler.o:
+$(SHADER_COMPILER_OBJECT): $(SHADER_COMPILER)
 	$(CC) -o $(SHADER_COMPILER_OBJECT) -c $(SHADER_COMPILER) $(FLAGS)
 
-KelvinletsObject.o:
+$(KELVINLETS_OBJECT): $(KELVINLETS)
 	$(CC) -o $(KELVINLETS_OBJECT) -c $(KELVINLETS) $(FLAGS)
 
-Image.o:
+$(IMAGE_OBJECT): $(IMAGE)
 	$(CC) -o $(IMAGE_OBJECT) -c $(IMAGE) $(FLAGS)
 
-RenderableImage.o:
+$(RENDERABLE_IMAGE_OBJECT): $(RENDERABLE_IMAGE)
 	$(CC) -o $(RENDERABLE_IMAGE_OBJECT) -c $(RENDERABLE_IMAGE) $(FLAGS)
 
-glImageAbstraction.o:
+$(GL_ABSTRACTION_OBJECT): $(GL_ABSTRACTION)
 	$(CC) -o $(GL_ABSTRACTION_OBJECT) -c $(GL_ABSTRACTION) $(FLAGS)
 
 clean:
 	rm -f $(BIN)* */.#* kelvin
 
-test: run
+test: kelvin
 	./kelvin ./testImages/mandrill.png 0.4 1.0
