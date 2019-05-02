@@ -7,6 +7,8 @@ bool button_down;
 bool retard;
 float brushSize;
 int shader;
+int width;
+int height;
 
 void initGlfw()
 {
@@ -54,8 +56,8 @@ static void clickButtonHandler(GLFWwindow * window, int button, int action, int 
           button_down = true;
           double x, y;
           glfwGetCursorPos(window, &x, &y);
-          initialPos = vec2(x, 512 - y);
-          nextPos = vec2(x, 512 - y);
+          initialPos = vec2(x, height - 1 - y);
+          nextPos = vec2(x, height - 1 - y);
         }else if(action == GLFW_RELEASE)
         {
           button_down = false;
@@ -73,7 +75,7 @@ static void cursorMovementHandler(GLFWwindow * window, double xpos, double ypos)
 {
   if(button_down)
     {
-      nextPos = vec2(xpos, ypos);
+      nextPos = vec2(xpos, height - 1 - ypos);
     }
 }
 
@@ -180,8 +182,8 @@ void initRender(RenderableImage rend,
   glUniform1f(a_location, a);
   glUniform1f(b_location, b);
   glUniform1f(c_location, c);
-  glUniform1i(width_location, rend.getWidth());
-  glUniform1i(height_location, rend.getHeight());
+  glUniform1i(width_location, width);
+  glUniform1i(height_location, height);
   
   GLint x0_location = glGetUniformLocation(shader, "x0");
   GLint force_location = glGetUniformLocation(shader, "force");
@@ -206,6 +208,8 @@ GLFWwindow * init(RenderableImage rend,
   button_down = false;
   retard = true;
   brushSize = 100.;
+  height = rend.getHeight();
+  width = rend.getWidth();
   GLFWwindow * window;
   window = initWindow(rend, programName);
   initRender(rend, pathToVertexShader, pathToFragmentShader, a, b, c);

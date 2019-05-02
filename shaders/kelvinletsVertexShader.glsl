@@ -16,7 +16,7 @@ uniform int button_down;
 
 out vec3 fragmentColor;
 
-const float PI = 3.1415926535897932384626433832795;
+float PI = 3.1415926535897932384626433832795;
 
 vec2 normalizer(vec2 entry)
 {
@@ -36,20 +36,21 @@ vec2 unormalize(vec2 entry)
 
 float retardationFunction(float alpha)
 {
-  return float((1/(pow(2, 1/4))) * pow(float(cos(PI * alpha) + 1), float(1/4)));
+    float ret = 1.0f/(pow(2.0f, (1.0f/4.0f))) * pow((cos(PI * alpha) + 1.0f), (1.0f/4.0f)); 
+    return ret;
 }
 
-vec2 retardInPosition(int x, int y)
+vec2 retardInPosition(float x, float y)
 {
-    vec2 outRetard;
+    vec2 outRetard = vec2(0.0f, 0.0f);
 
-    int dx1 = x;
-    int dx2 = width - x - 1;
-    int dy1 = y;
-    int dy2 = height - y - 1;
+    float dx1 = x;
+    float dx2 = width - x - 1;
+    float dy1 = y;
+    float dy2 = height - y - 1;
 
-    int dx = min(dx1, dx2);
-    int dy = min(dy1, dy2);
+    float dx = min(dx1, dx2);
+    float dy = min(dy1, dy2);
 
     float propX = float(2 * float(width / 2.0f - dx) / float(width));
     float propY = float(2 * float(height / 2.0f - dy) / float(height));
@@ -75,8 +76,7 @@ vec2 grabVariation()
     mat2 second = float(b/pow(rEpslon, 3)) * productWithTranspost(r);
     mat2 third = float((a/2) * ((pow(brushSize, 2)/pow(rEpslon, 3)))) * I;
     mat2 kelvinState = first + second + third;
-    vec2 f = vec2(force[0], height - 1 - force[1]);
-    return c * brushSize * kelvinState * f;
+    return c * brushSize * kelvinState * force;
 }
 
 vec2 grab()
@@ -85,7 +85,7 @@ vec2 grab()
     vec2 delta = grabVariation();
     if(bool(retard))
     {
-        vec2 retard = retardInPosition(int(unormPos[0]), int(unormPos[1]));
+        vec2 retard = retardInPosition(unormPos[0], unormPos[1]);
         delta[0] *= retard[0];
         delta[1] *= retard[1];
     }
@@ -97,6 +97,10 @@ void main()
 {   
     vec2 pos = grab();
     pos = normalizer(pos);
+    // vec2 unormPos = unormalize(position.xy);
+    // vec2 ret = retardInPosition(int(unormPos[0]), int(unormPos[1]));
+    // fragmentColor = vec3(min(ret[0], ret[1]), 0.0f, 0.0f);
+    // gl_Position = position;
     fragmentColor = vertexColor;
     if(button_down == 1)
     {   
