@@ -36,6 +36,15 @@ void initGlew()
     }
 }
 
+void updateVariableDescr()
+{
+  fflush(stdout);
+  if(retard)
+    cout << "\rRETARD: TRUE -- NEW BRUSH SIZE: " << brushSize << "     ";
+  else
+    cout << "\rRETARD: FALSE -- NEW BRUSH SIZE: " << brushSize << "     ";
+}
+
 static void clickButtonHandler(GLFWwindow * window, int button, int action, int mods)
 {
   if(button == GLFW_MOUSE_BUTTON_LEFT)
@@ -45,8 +54,8 @@ static void clickButtonHandler(GLFWwindow * window, int button, int action, int 
           button_down = true;
           double x, y;
           glfwGetCursorPos(window, &x, &y);
-          initialPos = vec2(x, y);
-          nextPos = vec2(x, y);
+          initialPos = vec2(x, 512 - y);
+          nextPos = vec2(x, 512 - y);
         }else if(action == GLFW_RELEASE)
         {
           button_down = false;
@@ -54,7 +63,10 @@ static void clickButtonHandler(GLFWwindow * window, int button, int action, int 
     }else if(button == GLFW_MOUSE_BUTTON_RIGHT &&
              action == GLFW_PRESS
              )
+    {
       retard = !retard;
+      updateVariableDescr();
+    }
 }
 
 static void cursorMovementHandler(GLFWwindow * window, double xpos, double ypos)
@@ -68,8 +80,7 @@ static void cursorMovementHandler(GLFWwindow * window, double xpos, double ypos)
 static void scrollHandler(GLFWwindow * window, double xoffset, double yoffset)
 {
   brushSize += 10 * yoffset;
-  fflush(stdout);
-  cout << "\rNEW BRUSH SIZE: " << brushSize << "     ";
+  updateVariableDescr();
 }
 
 void setHandlers(GLFWwindow * window)
@@ -163,20 +174,20 @@ void initRender(RenderableImage rend,
   GLint a_location = glGetUniformLocation(shader, "a");
   GLint b_location = glGetUniformLocation(shader, "b");
   GLint c_location = glGetUniformLocation(shader, "c");
-
+  GLint width_location = glGetUniformLocation(shader, "width");
+  GLint height_location = glGetUniformLocation(shader, "height");
+  
   glUniform1f(a_location, a);
   glUniform1f(b_location, b);
   glUniform1f(c_location, c);
-
-  GLint width_location = glGetUniformLocation(shader, "width");
-  GLint height_location = glGetUniformLocation(shader, "height");
+  glUniform1i(width_location, rend.getWidth());
+  glUniform1i(height_location, rend.getHeight());
+  
   GLint x0_location = glGetUniformLocation(shader, "x0");
   GLint force_location = glGetUniformLocation(shader, "force");
   GLint retard_location = glGetUniformLocation(shader, "retard");
   GLint button_down_location = glGetUniformLocation(shader, "button_down");
 
-  glUniform1i(width_location, rend.getWidth());
-  glUniform1i(height_location, rend.getHeight());
   glUniform2fv(x0_location, 1, &initialPos[0]);
   vec2 dif = nextPos - initialPos;
   glUniform2fv(force_location, 1, &dif[0]);
@@ -190,8 +201,8 @@ GLFWwindow * init(RenderableImage rend,
                    const char * programName, float a, float b, float c
                   )
 {
-  initialPos = vec2(0, 0);
-  nextPos = vec2(0, 0);
+  initialPos = vec2(0, 512);
+  nextPos = vec2(0, 512);
   button_down = false;
   retard = true;
   brushSize = 100.;
@@ -203,16 +214,12 @@ GLFWwindow * init(RenderableImage rend,
 
 void setKelvinVariables(RenderableImage rend)
 {
-  GLint width_location = glGetUniformLocation(shader, "width");
-  GLint height_location = glGetUniformLocation(shader, "height");
   GLint x0_location = glGetUniformLocation(shader, "x0");
   GLint force_location = glGetUniformLocation(shader, "force");
   GLint brushSize_location = glGetUniformLocation(shader, "brushSize");
   GLint retard_location = glGetUniformLocation(shader, "retard");
   GLint button_down_location = glGetUniformLocation(shader, "button_down");
 
-  glUniform1i(width_location, rend.getWidth());
-  glUniform1i(height_location, rend.getHeight());
   glUniform2fv(x0_location, 1, &initialPos[0]);
   vec2 dif = nextPos - initialPos;
   glUniform2fv(force_location, 1, &dif[0]);

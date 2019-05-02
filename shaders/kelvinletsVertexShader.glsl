@@ -11,17 +11,16 @@ uniform int height;
 uniform vec2 x0;
 uniform vec2 force;
 uniform float brushSize;
-
-layout(location = 10) in int retard;
-layout(location = 11) in int button_down;
+uniform int retard;
+uniform int button_down;
 
 out vec3 fragmentColor;
 
 const float PI = 3.1415926535897932384626433832795;
 
-vec2 normalize(vec2 entry)
+vec2 normalizer(vec2 entry)
 {
-    vec2 outVec  = entry;
+    vec2 outVec = vec2(entry[0], entry[1]);
     outVec[0] = 2 * (outVec[0]/(width)) - 1;
     outVec[1] = 2 * (outVec[1]/(height)) - 1;
     return outVec;
@@ -29,7 +28,7 @@ vec2 normalize(vec2 entry)
 
 vec2 unormalize(vec2 entry)
 {
-    vec2 outVec  = entry;
+    vec2 outVec = vec2(entry[0], entry[1]);
     outVec[0] = width * (outVec[0] + 1)/2;
     outVec[1] = height * (outVec[1] + 1)/2;
     return outVec;
@@ -76,7 +75,8 @@ vec2 grabVariation()
     mat2 second = float(b/pow(rEpslon, 3)) * productWithTranspost(r);
     mat2 third = float((a/2) * ((pow(brushSize, 2)/pow(rEpslon, 3)))) * I;
     mat2 kelvinState = first + second + third;
-    return c * brushSize * kelvinState * force;
+    vec2 f = vec2(force[0], height - 1 - force[1]);
+    return c * brushSize * kelvinState * f;
 }
 
 vec2 grab()
@@ -85,22 +85,22 @@ vec2 grab()
     vec2 delta = grabVariation();
     if(bool(retard))
     {
-        vec2 retard = retardInPosition(int(position[0]), int(position[1]));
+        vec2 retard = retardInPosition(int(unormPos[0]), int(unormPos[1]));
         delta[0] *= retard[0];
         delta[1] *= retard[1];
     }
     delta += unormPos;
-    delta = normalize(delta);
     return delta;
 }
 
 void main()
 {   
     vec2 pos = grab();
+    pos = normalizer(pos);
     fragmentColor = vertexColor;
-    if(bool(button_down))
-    {
-        gl_Position = vec4(pos.xy, 0.0f, 0.0f);
+    if(button_down == 1)
+    {   
+        gl_Position = vec4(pos[0], pos[1], 0.0f, 1.0f);
     }else{
         gl_Position = position;
     }
