@@ -14,6 +14,7 @@ uniform float brushSize;
 uniform int retard;
 uniform int button_down;
 uniform int reset;
+uniform int gpu;
 
 out vec3 fragmentColor;
 
@@ -96,11 +97,11 @@ vec2 grab()
 
 void main()
 {   
-    vec2 pos = grab();
-    pos = normalizer(pos);
     fragmentColor = vertexColor;
-    if(button_down == 1 || reset == 1)
-    {   
+    if(gpu == 1 && (button_down == 1 || reset == 1))
+    {
+        vec2 pos = grab();
+        pos = normalizer(pos);
         gl_Position = vec4(pos[0], pos[1], 0.0f, 1.0f);
     }else{
         gl_Position = position;

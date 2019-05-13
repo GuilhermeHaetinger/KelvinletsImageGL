@@ -7,6 +7,7 @@ bool button_down;
 bool reset;
 bool retard;
 float brushSize;
+bool gpu;
 int shader;
 int width;
 int height;
@@ -42,10 +43,10 @@ void initGlew()
 void updateVariableDescr()
 {
   fflush(stdout);
-  if(retard)
-    cout << "\rRETARD: TRUE -- NEW BRUSH SIZE: " << brushSize << "     ";
-  else
-    cout << "\rRETARD: FALSE -- NEW BRUSH SIZE: " << brushSize << "     ";
+  // if(retard)
+  //   cout << "\rRETARD: TRUE -- NEW BRUSH SIZE: " << brushSize << "     ";
+  // else
+    cout << "\rRETARD: "<<  boolalpha << retard << " -- USING GPU: " << boolalpha << gpu << "-- NEW BRUSH SIZE: " << brushSize << "     ";
 }
 
 static void clickButtonHandler(GLFWwindow * window, int button, int action, int mods)
@@ -88,11 +89,18 @@ static void scrollHandler(GLFWwindow * window, double xoffset, double yoffset)
   updateVariableDescr();
 }
 
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    if (key == GLFW_KEY_G && action == GLFW_PRESS)
+        gpu = !gpu;
+}
+
 void setHandlers(GLFWwindow * window)
 {
   glfwSetMouseButtonCallback(window, clickButtonHandler);
   glfwSetCursorPosCallback(window, cursorMovementHandler);
   glfwSetScrollCallback(window, scrollHandler);
+  glfwSetKeyCallback(window, key_callback);
 }
 
 GLFWwindow * initWindow(RenderableImage rend, const char * programName)
@@ -106,6 +114,7 @@ GLFWwindow * initWindow(RenderableImage rend, const char * programName)
   glfwMakeContextCurrent(window);
   initGlew();
   setHandlers(window);
+  updateVariableDescr();
   return window;
 }
 
@@ -193,6 +202,7 @@ void initRender(RenderableImage rend,
   GLint retard_location = glGetUniformLocation(shader, "retard");
   GLint button_down_location = glGetUniformLocation(shader, "button_down");
   GLint reset_location = glGetUniformLocation(shader, "reset");
+  GLint gpu_location = glGetUniformLocation(shader, "gpu");
 
   glUniform2fv(x0_location, 1, &initialPos[0]);
   vec2 dif = nextPos - initialPos;
@@ -200,6 +210,7 @@ void initRender(RenderableImage rend,
   glUniform1i(retard_location, retard);
   glUniform1i(button_down_location, button_down);
   glUniform1i(reset_location, reset);
+  glUniform1i(gpu_location, gpu);
   
 }
 
@@ -213,6 +224,7 @@ GLFWwindow * init(RenderableImage * rend,
   button_down = false;
   retard = true;
   brushSize = 100.;
+  gpu = true;
   height = rend->getHeight();
   width = rend->getWidth();
   GLFWwindow * window;
@@ -230,6 +242,7 @@ void setKelvinVariables(RenderableImage rend)
   GLint retard_location = glGetUniformLocation(shader, "retard");
   GLint button_down_location = glGetUniformLocation(shader, "button_down");
   GLint reset_location = glGetUniformLocation(shader, "reset");
+  GLint gpu_location = glGetUniformLocation(shader, "gpu");
 
 
   glUniform2fv(x0_location, 1, &initialPos[0]);
@@ -239,6 +252,7 @@ void setKelvinVariables(RenderableImage rend)
   glUniform1i(retard_location, retard);
   glUniform1i(button_down_location, button_down);
   glUniform1i(reset_location, reset);
+  glUniform1i(gpu_location, gpu);
 } 
 
 void reRender(GLFWwindow * window, RenderableImage rend, GLfloat * vertices)
@@ -271,11 +285,12 @@ void reRender(GLFWwindow * window, RenderableImage rend, GLfloat * vertices)
   free(colors);
 }
 
-void feedbackVariables(vec2 * initPosition, vec2 * nextPosition, bool * btn_down, bool * ret, float * brSize)
+void feedbackVariables(vec2 * initPosition, vec2 * nextPosition, bool * btn_down, bool * ret, float * brSize, bool * gpuProcessing)
 {
   *initPosition = initialPos;
   *nextPosition = nextPos;
   *btn_down =  button_down;
   *ret = retard;
   *brSize = brushSize;
+  *gpuProcessing = gpu;
 }

@@ -16,7 +16,7 @@ GLFWwindow * init(RenderableImage *rend,
 void reRender(GLFWwindow * window, RenderableImage rend, GLfloat * vertices);
 
 void feedbackVariables(vec2 * initPosition, vec2 * nextPosition,
-                       bool * btn_down, bool * ret, float * brSize
-                       );
+                       bool * btn_down, bool * ret, float * brSize,
+                       bool * gpuProcessing);
 
 #endif

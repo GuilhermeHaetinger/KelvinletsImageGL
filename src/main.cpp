@@ -3,6 +3,7 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <stdlib.h>
+#include "opencv2/opencv.hpp"
 #include "../include/KelvinletsObject.h"
 #include "../include/glImageAbstraction.h"
 
@@ -64,6 +65,7 @@ int main(int argc, char *argv[])
   vec2 *nextPosition = (vec2 *)malloc(sizeof(vec2));
   bool *buttonDown = (bool *)malloc(sizeof(bool));
   bool *retard = (bool *)malloc(sizeof(bool));
+  bool *gpu = (bool *)malloc(sizeof(bool));
   float *brushSize = (float *)malloc(sizeof(float));
 
   GLfloat *vertices = (GLfloat *)malloc(width * height * 2 * sizeof(GLfloat));
@@ -75,14 +77,16 @@ int main(int argc, char *argv[])
   while (!glfwWindowShouldClose(window))
   {
     
-    // feedbackVariables(initialPosition, nextPosition, buttonDown, retard, brushSize);
-    // if (*buttonDown)
-    // {
-    //   invertYAxis(initialPosition, height);
-    //   invertYAxis(nextPosition, height);
-    //   dif = *nextPosition - *initialPosition;
-    //   kelvin.grab(*initialPosition, dif, *brushSize, vertices, newVertices, *retard);
-    // }
+    feedbackVariables(initialPosition, nextPosition, buttonDown, retard, brushSize, gpu);
+    if (*buttonDown && !*gpu)
+    {
+      //invertYAxis(initialPosition, height);
+      //invertYAxis(nextPosition, height);
+      dif = *nextPosition - *initialPosition;
+      kelvin.grab(*initialPosition, dif, *brushSize, vertices, newVertices, *retard);
+    }else if(*gpu){
+      renderableImage->getVertices(newVertices);
+    }
     reRender(window, *renderableImage, newVertices);
   }
   glfwTerminate();
