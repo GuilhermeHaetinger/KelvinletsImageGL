@@ -13,6 +13,7 @@ uniform vec2 force;
 uniform float brushSize;
 uniform int retard;
 uniform int button_down;
+uniform int reset;
 
 out vec3 fragmentColor;
 
@@ -97,12 +98,8 @@ void main()
 {   
     vec2 pos = grab();
     pos = normalizer(pos);
-    // vec2 unormPos = unormalize(position.xy);
-    // vec2 ret = retardInPosition(int(unormPos[0]), int(unormPos[1]));
-    // fragmentColor = vec3(min(ret[0], ret[1]), 0.0f, 0.0f);
-    // gl_Position = position;
     fragmentColor = vertexColor;
-    if(button_down == 1)
+    if(button_down == 1 || reset == 1)
     {   
         gl_Position = vec4(pos[0], pos[1], 0.0f, 1.0f);
     }else{

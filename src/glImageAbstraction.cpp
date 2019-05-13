@@ -4,6 +4,7 @@
 vec2 initialPos;
 vec2 nextPos;
 bool button_down;
+bool reset;
 bool retard;
 float brushSize;
 int shader;
@@ -53,6 +54,7 @@ static void clickButtonHandler(GLFWwindow * window, int button, int action, int 
     {
       if(action == GLFW_PRESS)
         {
+          reset = false;
           button_down = true;
           double x, y;
           glfwGetCursorPos(window, &x, &y);
@@ -60,6 +62,7 @@ static void clickButtonHandler(GLFWwindow * window, int button, int action, int 
           nextPos = vec2(x, height - 1 - y);
         }else if(action == GLFW_RELEASE)
         {
+          reset = true;
           button_down = false;
         }
     }else if(button == GLFW_MOUSE_BUTTON_RIGHT &&
@@ -189,16 +192,18 @@ void initRender(RenderableImage rend,
   GLint force_location = glGetUniformLocation(shader, "force");
   GLint retard_location = glGetUniformLocation(shader, "retard");
   GLint button_down_location = glGetUniformLocation(shader, "button_down");
+  GLint reset_location = glGetUniformLocation(shader, "reset");
 
   glUniform2fv(x0_location, 1, &initialPos[0]);
   vec2 dif = nextPos - initialPos;
   glUniform2fv(force_location, 1, &dif[0]);
   glUniform1i(retard_location, retard);
   glUniform1i(button_down_location, button_down);
+  glUniform1i(reset_location, reset);
   
 }
 
-GLFWwindow * init(RenderableImage rend,
+GLFWwindow * init(RenderableImage * rend,
                    string pathToVertexShader, string pathToFragmentShader,
                    const char * programName, float a, float b, float c
                   )
@@ -208,11 +213,12 @@ GLFWwindow * init(RenderableImage rend,
   button_down = false;
   retard = true;
   brushSize = 100.;
-  height = rend.getHeight();
-  width = rend.getWidth();
+  height = rend->getHeight();
+  width = rend->getWidth();
   GLFWwindow * window;
-  window = initWindow(rend, programName);
-  initRender(rend, pathToVertexShader, pathToFragmentShader, a, b, c);
+  window = initWindow(*rend, programName);
+  rend->initBuffers();
+  initRender(*rend, pathToVertexShader, pathToFragmentShader, a, b, c);
   return window;
 }
 
@@ -223,6 +229,8 @@ void setKelvinVariables(RenderableImage rend)
   GLint brushSize_location = glGetUniformLocation(shader, "brushSize");
   GLint retard_location = glGetUniformLocation(shader, "retard");
   GLint button_down_location = glGetUniformLocation(shader, "button_down");
+  GLint reset_location = glGetUniformLocation(shader, "reset");
+
 
   glUniform2fv(x0_location, 1, &initialPos[0]);
   vec2 dif = nextPos - initialPos;
@@ -230,6 +238,7 @@ void setKelvinVariables(RenderableImage rend)
   glUniform1f(brushSize_location, brushSize);
   glUniform1i(retard_location, retard);
   glUniform1i(button_down_location, button_down);
+  glUniform1i(reset_location, reset);
 } 
 
 void reRender(GLFWwindow * window, RenderableImage rend, GLfloat * vertices)
@@ -245,6 +254,7 @@ void reRender(GLFWwindow * window, RenderableImage rend, GLfloat * vertices)
 
   GLfloat * colors = newColorArray(rend);
   rend.getColors(colors);
+
 
   glBindBuffer(GL_ARRAY_BUFFER, rend.getColorBuffer());
   glBufferSubData(GL_ARRAY_BUFFER, 0,

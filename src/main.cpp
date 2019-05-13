@@ -7,6 +7,7 @@
 #include "../include/glImageAbstraction.h"
 
 using namespace std;
+using namespace cv;
 
 void checkArgumentConsistency(int argc)
 {
@@ -28,11 +29,26 @@ int main(int argc, char *argv[])
 {
   checkArgumentConsistency(argc);
 
-  RenderableImage renderableImage(argv[1]);
+  // Create a VideoCapture object and use camera to capture the video
+  VideoCapture cap(0); 
+ 
+  // Check if camera opened successfully
+  if(!cap.isOpened())
+  {
+    cout << "Error opening video stream" << endl; 
+    return -1; 
+  }
+
+
+////////////////////////////
+
+
+  RenderableImage * renderableImage = new RenderableImage(cap);
+  
   string vertex = "./shaders/kelvinletsVertexShader.glsl";
   string fragment = "./shaders/fragmentShader.glsl";
-  int width = renderableImage.getWidth();
-  int height = renderableImage.getHeight();
+  int width = renderableImage->getWidth();
+  int height = renderableImage->getHeight();
   KelvinletsObject kelvin(width, height, atof(argv[2]), atof(argv[3]));
 
   float elasticShear = atof(argv[2]);
@@ -41,7 +57,7 @@ int main(int argc, char *argv[])
   float a = 1 / (4 * pi<float>() * poissonRatio);
   float b = a / (4 - 4 * elasticShear);
   float c = 2 / (3 * a - 2 * b);
-    
+
   GLFWwindow *window = init(renderableImage, vertex, fragment, "Kelvinlets", a, b, c);
 
   vec2 *initialPosition = (vec2 *)malloc(sizeof(vec2));
@@ -52,12 +68,13 @@ int main(int argc, char *argv[])
 
   GLfloat *vertices = (GLfloat *)malloc(width * height * 2 * sizeof(GLfloat));
   GLfloat *newVertices = (GLfloat *)malloc(width * height * 2 * sizeof(GLfloat));
-  renderableImage.getVertices(vertices);
-  renderableImage.getVertices(newVertices);
+  renderableImage->getVertices(vertices);
+  renderableImage->getVertices(newVertices);
 
   vec2 dif;
   while (!glfwWindowShouldClose(window))
   {
+    
     // feedbackVariables(initialPosition, nextPosition, buttonDown, retard, brushSize);
     // if (*buttonDown)
     // {
@@ -66,9 +83,16 @@ int main(int argc, char *argv[])
     //   dif = *nextPosition - *initialPosition;
     //   kelvin.grab(*initialPosition, dif, *brushSize, vertices, newVertices, *retard);
     // }
-    reRender(window, renderableImage, newVertices);
+    reRender(window, *renderableImage, newVertices);
   }
   glfwTerminate();
+
+   
+  // When everything done, release the video capture and write object
+  cap.release();
+ 
+  // Closes all the windows
+  destroyAllWindows();
 
   exit(0);
 }

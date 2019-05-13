@@ -7,7 +7,7 @@
 #include "../include/RenderableImage.h"
 #include "../include/ShaderCompiler.h"
 
-GLFWwindow * init(RenderableImage rend,
+GLFWwindow * init(RenderableImage *rend,
                   string pathToVertexShader, string pathToFragmentShader,
                   const char * programName,
                   float a, float b, float c

@@ -5,21 +5,25 @@
 #include <glm/glm.hpp>
 #include <string>
 #include "CImg.h"
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
 
-using namespace cimg_library;
+using namespace cv;
 using namespace glm;
 
 class Image
 {
 private:
-    CImg<unsigned char> cimg_source;
+    Mat frame;
+    VideoCapture src;
 
 public:
-    Image(char* filepath);
+    Image(VideoCapture cap);
 
     vec3 getColor(int x, int y);
     int getWidth();
     int getHeight();
+    Mat getMat();
 };
 
 #endif

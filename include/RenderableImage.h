@@ -5,12 +5,15 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+using namespace cv;
+
 class RenderableImage
 {
  private:
   GLfloat * vertices;
   GLuint * indices;
   GLfloat * colors;
+  Image * src;
 
   GLuint vertexBuffer;
   GLuint indexBuffer;
@@ -23,8 +26,10 @@ class RenderableImage
   void initIndices();
   void initColors(Image img);
 
+  void refreshColors(Image img);
+
  public:
-  RenderableImage(char * filepath);
+  RenderableImage(VideoCapture cap);
 
   void getVertices(GLfloat * dest);
   void getIndices(GLuint * dest);

@@ -2,22 +2,30 @@
 #include <iostream>
 
 using namespace std;
-using namespace cimg_library;
+using namespace cv;
 
-Image::Image(char* filepath)
+Image::Image(VideoCapture cap)
 {
-  CImg<unsigned char> image(filepath);
-  this->cimg_source = image;
+  this->src = cap;
+  cap >> this->frame;
 }
 
 vec3 Image::getColor(int x, int y)
 {
-  GLfloat R =  (GLfloat)this->cimg_source(x, y, 0, 0)/256;
-  GLfloat G =  (GLfloat)this->cimg_source(x, y, 0, 1)/256;
-  GLfloat B =  (GLfloat)this->cimg_source(x, y, 0, 2)/256;
+  Mat frame;
+  this->src >> frame;
+  Vec3b rgb = frame.at<Vec3b>(Point(x, y));
+  GLfloat R =  ((float)rgb[0])/256;
+  GLfloat G =  ((float)rgb[1])/256;
+  GLfloat B =  ((float)rgb[2])/256;
 
   return vec3(R, G, B);
 }
 
-int Image::getWidth(){return this->cimg_source.width();}
-int Image::getHeight(){return this->cimg_source.height();}
+int Image::getWidth(){return this->src.get(CV_CAP_PROP_FRAME_WIDTH);}
+int Image::getHeight(){return this->src.get(CV_CAP_PROP_FRAME_HEIGHT);}
+
+Mat Image::getMat(){
+  this->src >> this->frame;
+  return this->frame;
+}
