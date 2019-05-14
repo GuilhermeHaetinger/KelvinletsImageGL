@@ -28,6 +28,11 @@ void invertYAxis(vec2 *vec, int height)
 
 int main(int argc, char *argv[])
 {
+  system("clear");
+  cout << "LEFT MOUSE BUTTON: deform" << endl
+       << "RIGHT MOUSE BUTTON: toggle corner fixing" << endl
+       << "G: toggle GPU processing" << endl;
+  
   checkArgumentConsistency(argc);
 
   // Create a VideoCapture object and use camera to capture the video

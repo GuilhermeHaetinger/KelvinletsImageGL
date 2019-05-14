@@ -42,11 +42,8 @@ void initGlew()
 
 void updateVariableDescr()
 {
+  cout << "\33[2K\rRETARD: "<<  boolalpha << retard << " -- USING GPU: " << boolalpha << gpu << " -- NEW BRUSH SIZE: " << brushSize << "     ";
   fflush(stdout);
-  // if(retard)
-  //   cout << "\rRETARD: TRUE -- NEW BRUSH SIZE: " << brushSize << "     ";
-  // else
-    cout << "\rRETARD: "<<  boolalpha << retard << " -- USING GPU: " << boolalpha << gpu << "-- NEW BRUSH SIZE: " << brushSize << "     ";
 }
 
 static void clickButtonHandler(GLFWwindow * window, int button, int action, int mods)
@@ -92,7 +89,10 @@ static void scrollHandler(GLFWwindow * window, double xoffset, double yoffset)
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
     if (key == GLFW_KEY_G && action == GLFW_PRESS)
-        gpu = !gpu;
+    {
+          gpu = !gpu;
+          updateVariableDescr();
+    }
 }
 
 void setHandlers(GLFWwindow * window)
