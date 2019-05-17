@@ -68,7 +68,6 @@ void RenderableImage::refreshColors(Image img)
   int size = this->getNumOfVertices() * 3 * sizeof(GLfloat);
   int bufS = this->getNumOfVertices() * 3 * sizeof(uint8_t);
   uint8_t * buff = (uint8_t*)malloc(bufS);
-  GLfloat* c = (GLfloat*)malloc(size);
 
   Mat mat = img.getMat();
   memcpy(buff, mat.ptr(0), mat.cols*mat.rows * sizeof(uint8_t)*3);
@@ -78,6 +77,7 @@ void RenderableImage::refreshColors(Image img)
     this->colors[i+1] = ((GLfloat)buff[i+1])/256;
     this->colors[i+2] = ((GLfloat)buff[i])/256;
   }
+  free(buff);
 }
 
 RenderableImage::RenderableImage(VideoCapture cap)
