@@ -1,0 +1,1275 @@
+desc: (none)
+cmd: ./kelvin ./testImages/shrek.png 0.4 1.0
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=360103252
+mem_heap_B=4193516
+mem_heap_extra_B=860668
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=779395113
+mem_heap_B=43324922
+mem_heap_extra_B=979990
+mem_stacks_B=0
+heap_tree=detailed
+n14: 43324922 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 11263756 0x312DDFEA: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n2: 9830523 0x3254B7F5: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+   n2: 9829396 0x32535A5B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+    n1: 7371725 0x32172D6B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+     n3: 7371725 0x32174A80: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+      n1: 3686471 0x10F9FF: setColorBuffer(RenderableImage) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+       n1: 3686471 0x10FB30: initRender(RenderableImage, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+        n1: 3686471 0x10FFD6: init(RenderableImage*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char const*, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+         n0: 3686471 0x10C5CE: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+      n1: 2456383 0x10F8F9: setIndexBuffer(RenderableImage) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+       n1: 2456383 0x10FAF6: initRender(RenderableImage, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+        n1: 2456383 0x10FFD6: init(RenderableImage*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char const*, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+         n0: 2456383 0x10C5CE: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+      n1: 1228871 0x10FBC6: initRender(RenderableImage, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+       n1: 1228871 0x10FFD6: init(RenderableImage*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char const*, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+        n0: 1228871 0x10C5CE: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+    n1: 2457671 0x312DF28F: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+     n1: 2457671 0x32172D6B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+      n1: 2457671 0x32174A80: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+       n1: 2457671 0x10F7DF: setVertexBuffer(RenderableImage) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+        n1: 2457671 0x10FABC: initRender(RenderableImage, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+         n1: 2457671 0x10FFD6: init(RenderableImage*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char const*, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+          n0: 2457671 0x10C5CE: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+   n0: 1127 in 1 place, below massif's threshold (1.00%)
+  n1: 819200 0x32116EE8: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+   n1: 819200 0x3218FD0A: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+    n1: 819200 0x32562777: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+     n1: 819200 0x325359C4: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+      n1: 819200 0x3127DD67: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+       n1: 819200 0x312AC358: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+        n1: 819200 0x312B1826: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+         n1: 819200 0x312A3014: glXCreateContextAttribsARB (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+          n1: 819200 0x7CC424E: ??? (in /usr/lib/x86_64-linux-gnu/libGLX.so.0)
+           n1: 819200 0x4E457B0: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.2)
+            n1: 819200 0x4E423A3: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.2)
+             n1: 819200 0x4E3BEE0: glfwCreateWindow (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.2)
+              n1: 819200 0x10F6A8: initWindow(RenderableImage, char const*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+               n1: 819200 0x10FF49: init(RenderableImage*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char const*, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+                n0: 819200 0x10C5CE: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 614033 in 193 places, all below massif's threshold (1.00%)
+ n1: 7372800 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 7372800 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n1: 3686400 0x10E987: RenderableImage::initColors(Image) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n1: 3686400 0x10EE2E: RenderableImage::RenderableImage(cv::VideoCapture) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+   n0: 3686400 0x10C407: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 2457600 0x10C66D: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 2457600 0x10C67C: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n1: 2457600 0x10E7DB: RenderableImage::initVertices() (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n1: 2457600 0x10ED20: RenderableImage::RenderableImage(cv::VideoCapture) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+   n0: 2457600 0x10C407: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n1: 2456312 0x10E8A4: RenderableImage::initIndices() (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n1: 2456312 0x10ED28: RenderableImage::RenderableImage(cv::VideoCapture) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+   n0: 2456312 0x10C407: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n3: 2250455 0x55BC380: cv::fastMalloc(unsigned long) (in /usr/lib/x86_64-linux-gnu/libopencv_core.so.3.2.0)
+  n1: 921624 0x56BB219: cv::Mat::create(int, int const*, int) (in /usr/lib/x86_64-linux-gnu/libopencv_core.so.3.2.0)
+   n1: 921624 0x56D96E3: cv::_OutputArray::create(int, int, int, int, bool, int) const (in /usr/lib/x86_64-linux-gnu/libopencv_core.so.3.2.0)
+    n1: 921624 0x560BBD2: cv::Mat::copyTo(cv::_OutputArray const&) const (in /usr/lib/x86_64-linux-gnu/libopencv_core.so.3.2.0)
+     n1: 921624 0x5BDEE25: cv::VideoCapture::retrieve(cv::_OutputArray const&, int) (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+      n1: 921624 0x5BDE7F2: cv::VideoCapture::read(cv::_OutputArray const&) (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+       n1: 921624 0x5BDE677: cv::VideoCapture::operator>>(cv::Mat&) (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+        n1: 921624 0x10E6A5: Image::Image(cv::VideoCapture) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+         n1: 921624 0x10ECEF: RenderableImage::RenderableImage(cv::VideoCapture) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+          n0: 921624 0x10C407: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n1: 921624 0x5BF0E7E: ??? (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+   n1: 921624 0x5BF1AF0: ??? (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+    n1: 921624 0x5BF4F44: ??? (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+     n1: 921624 0x5BF4FD6: ??? (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+      n1: 921624 0x5BF50F4: ??? (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+       n1: 921624 0x5BDF146: cvCreateCameraCapture (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+        n1: 921624 0x5BE07CE: cv::VideoCapture::open(int) (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+         n1: 921624 0x5BE085A: cv::VideoCapture::VideoCapture(int) (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+          n0: 921624 0x10C32A: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 407207 in 2 places, all below massif's threshold (1.00%)
+ n2: 2238650 0x312DDE24: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n0: 1282874 in 91 places, all below massif's threshold (1.00%)
+  n1: 955776 0x3268C3AA: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+   n1: 955776 0x32571E05: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+    n1: 955776 0x325726E8: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+     n1: 955776 0x3255ED59: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+      n1: 955776 0x32537225: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+       n1: 955776 0x3127D295: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+        n1: 955776 0x3127D491: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+         n1: 955776 0x312AFE07: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+          n1: 955776 0x7CC36DA: ??? (in /usr/lib/x86_64-linux-gnu/libGLX.so.0)
+           n1: 955776 0x7CC3F11: ??? (in /usr/lib/x86_64-linux-gnu/libGLX.so.0)
+            n1: 955776 0x4E44F79: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.2)
+             n1: 955776 0x4E3BF3F: glfwCreateWindow (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.2)
+              n1: 955776 0x10F6A8: initWindow(RenderableImage, char const*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+               n1: 955776 0x10FF49: init(RenderableImage*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char const*, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+                n0: 955776 0x10C5CE: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 2056277 in 736 places, all below massif's threshold (1.00%)
+ n1: 1579680 0x1BC39434: gdcm::Dict::LoadDefault() (in /usr/lib/x86_64-linux-gnu/libgdcmDICT.so.2.8.4)
+  n1: 1579680 0x1BC37DF7: gdcm::Dicts::LoadDefaults() (in /usr/lib/x86_64-linux-gnu/libgdcmDICT.so.2.8.4)
+   n1: 1579680 0x1BC3B2F8: gdcm::Global::Global() (in /usr/lib/x86_64-linux-gnu/libgdcmDICT.so.2.8.4)
+    n1: 1579680 0x1BC37A9E: ??? (in /usr/lib/x86_64-linux-gnu/libgdcmDICT.so.2.8.4)
+     n1: 1579680 0x4010731: _dl_init (dl-init.c:72)
+      n1: 1579680 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+       n1: 1579680 0x2: ???
+        n1: 1579680 0x1FFEFFFF25: ???
+         n1: 1579680 0x1FFEFFFF2E: ???
+          n1: 1579680 0x1FFEFFFF45: ???
+           n0: 1579680 0x1FFEFFFF49: ???
+ n1: 1511792 0x1BC39C49: gdcm::PrivateDict::LoadDefault() (in /usr/lib/x86_64-linux-gnu/libgdcmDICT.so.2.8.4)
+  n1: 1511792 0x1BC37E00: gdcm::Dicts::LoadDefaults() (in /usr/lib/x86_64-linux-gnu/libgdcmDICT.so.2.8.4)
+   n1: 1511792 0x1BC3B2F8: gdcm::Global::Global() (in /usr/lib/x86_64-linux-gnu/libgdcmDICT.so.2.8.4)
+    n1: 1511792 0x1BC37A9E: ??? (in /usr/lib/x86_64-linux-gnu/libgdcmDICT.so.2.8.4)
+     n1: 1511792 0x4010731: _dl_init (dl-init.c:72)
+      n1: 1511792 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+       n1: 1511792 0x2: ???
+        n1: 1511792 0x1FFEFFFF25: ???
+         n1: 1511792 0x1FFEFFFF2E: ???
+          n1: 1511792 0x1FFEFFFF45: ???
+           n0: 1511792 0x1FFEFFFF49: ???
+ n1: 921600 0x10EB13: RenderableImage::refreshColors(Image) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n2: 921600 0x10F0CF: RenderableImage::getColors(float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+   n1: 921600 0x1102F4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+    n0: 921600 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+   n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 614400 0x5BF1A9E: ??? (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+  n1: 614400 0x5BF4F44: ??? (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+   n1: 614400 0x5BF4FD6: ??? (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+    n1: 614400 0x5BF50F4: ??? (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+     n1: 614400 0x5BDF146: cvCreateCameraCapture (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+      n1: 614400 0x5BE07CE: cv::VideoCapture::open(int) (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+       n1: 614400 0x5BE085A: cv::VideoCapture::VideoCapture(int) (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+        n0: 614400 0x10C32A: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+#-----------
+snapshot=3
+#-----------
+time=1027908481
+mem_heap_B=69129930
+mem_heap_extra_B=980054
+mem_stacks_B=0
+heap_tree=detailed
+n13: 69129930 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 33177600 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 33177600 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n3: 11263756 0x312DDFEA: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n2: 9830523 0x3254B7F5: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+   n2: 9829396 0x32535A5B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+    n1: 7371725 0x32172D6B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+     n3: 7371725 0x32174A80: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+      n1: 3686471 0x10F9FF: setColorBuffer(RenderableImage) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+       n1: 3686471 0x10FB30: initRender(RenderableImage, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+        n1: 3686471 0x10FFD6: init(RenderableImage*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char const*, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+         n0: 3686471 0x10C5CE: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+      n1: 2456383 0x10F8F9: setIndexBuffer(RenderableImage) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+       n1: 2456383 0x10FAF6: initRender(RenderableImage, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+        n1: 2456383 0x10FFD6: init(RenderableImage*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char const*, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+         n0: 2456383 0x10C5CE: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+      n1: 1228871 0x10FBC6: initRender(RenderableImage, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+       n1: 1228871 0x10FFD6: init(RenderableImage*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char const*, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+        n0: 1228871 0x10C5CE: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+    n1: 2457671 0x312DF28F: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+     n1: 2457671 0x32172D6B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+      n1: 2457671 0x32174A80: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+       n1: 2457671 0x10F7DF: setVertexBuffer(RenderableImage) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+        n1: 2457671 0x10FABC: initRender(RenderableImage, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+         n1: 2457671 0x10FFD6: init(RenderableImage*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char const*, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+          n0: 2457671 0x10C5CE: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+   n0: 1127 in 1 place, below massif's threshold (1.00%)
+  n1: 819200 0x32116EE8: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+   n1: 819200 0x3218FD0A: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+    n1: 819200 0x32562777: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+     n1: 819200 0x325359C4: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+      n1: 819200 0x3127DD67: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+       n1: 819200 0x312AC358: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+        n1: 819200 0x312B1826: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+         n1: 819200 0x312A3014: glXCreateContextAttribsARB (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+          n1: 819200 0x7CC424E: ??? (in /usr/lib/x86_64-linux-gnu/libGLX.so.0)
+           n1: 819200 0x4E457B0: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.2)
+            n1: 819200 0x4E423A3: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.2)
+             n1: 819200 0x4E3BEE0: glfwCreateWindow (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.2)
+              n1: 819200 0x10F6A8: initWindow(RenderableImage, char const*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+               n1: 819200 0x10FF49: init(RenderableImage*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char const*, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+                n0: 819200 0x10C5CE: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 614033 in 193 places, all below massif's threshold (1.00%)
+ n1: 3686400 0x10E987: RenderableImage::initColors(Image) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n1: 3686400 0x10EE2E: RenderableImage::RenderableImage(cv::VideoCapture) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+   n0: 3686400 0x10C407: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 2670677 in 737 places, all below massif's threshold (1.00%)
+ n0: 2457600 0x10C66D: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 2457600 0x10C67C: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n1: 2457600 0x10E7DB: RenderableImage::initVertices() (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n1: 2457600 0x10ED20: RenderableImage::RenderableImage(cv::VideoCapture) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+   n0: 2457600 0x10C407: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n1: 2456312 0x10E8A4: RenderableImage::initIndices() (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n1: 2456312 0x10ED28: RenderableImage::RenderableImage(cv::VideoCapture) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+   n0: 2456312 0x10C407: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n3: 2250455 0x55BC380: cv::fastMalloc(unsigned long) (in /usr/lib/x86_64-linux-gnu/libopencv_core.so.3.2.0)
+  n1: 921624 0x56BB219: cv::Mat::create(int, int const*, int) (in /usr/lib/x86_64-linux-gnu/libopencv_core.so.3.2.0)
+   n1: 921624 0x56D96E3: cv::_OutputArray::create(int, int, int, int, bool, int) const (in /usr/lib/x86_64-linux-gnu/libopencv_core.so.3.2.0)
+    n1: 921624 0x560BBD2: cv::Mat::copyTo(cv::_OutputArray const&) const (in /usr/lib/x86_64-linux-gnu/libopencv_core.so.3.2.0)
+     n1: 921624 0x5BDEE25: cv::VideoCapture::retrieve(cv::_OutputArray const&, int) (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+      n1: 921624 0x5BDE7F2: cv::VideoCapture::read(cv::_OutputArray const&) (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+       n1: 921624 0x5BDE677: cv::VideoCapture::operator>>(cv::Mat&) (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+        n1: 921624 0x10E6A5: Image::Image(cv::VideoCapture) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+         n1: 921624 0x10ECEF: RenderableImage::RenderableImage(cv::VideoCapture) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+          n0: 921624 0x10C407: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n1: 921624 0x5BF0E7E: ??? (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+   n1: 921624 0x5BF1AF0: ??? (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+    n1: 921624 0x5BF4F44: ??? (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+     n1: 921624 0x5BF4FD6: ??? (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+      n1: 921624 0x5BF50F4: ??? (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+       n1: 921624 0x5BDF146: cvCreateCameraCapture (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+        n1: 921624 0x5BE07CE: cv::VideoCapture::open(int) (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+         n1: 921624 0x5BE085A: cv::VideoCapture::VideoCapture(int) (in /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0)
+          n0: 921624 0x10C32A: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 407207 in 2 places, all below massif's threshold (1.00%)
+ n2: 2238858 0x312DDE24: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n0: 1283082 in 91 places, all below massif's threshold (1.00%)
+  n1: 955776 0x3268C3AA: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+   n1: 955776 0x32571E05: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+    n1: 955776 0x325726E8: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+     n1: 955776 0x3255ED59: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+      n1: 955776 0x32537225: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+       n1: 955776 0x3127D295: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+        n1: 955776 0x3127D491: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+         n1: 955776 0x312AFE07: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+          n1: 955776 0x7CC36DA: ??? (in /usr/lib/x86_64-linux-gnu/libGLX.so.0)
+           n1: 955776 0x7CC3F11: ??? (in /usr/lib/x86_64-linux-gnu/libGLX.so.0)
+            n1: 955776 0x4E44F79: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.2)
+             n1: 955776 0x4E3BF3F: glfwCreateWindow (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.2)
+              n1: 955776 0x10F6A8: initWindow(RenderableImage, char const*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+               n1: 955776 0x10FF49: init(RenderableImage*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char const*, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+                n0: 955776 0x10C5CE: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n1: 1579680 0x1BC39434: gdcm::Dict::LoadDefault() (in /usr/lib/x86_64-linux-gnu/libgdcmDICT.so.2.8.4)
+  n1: 1579680 0x1BC37DF7: gdcm::Dicts::LoadDefaults() (in /usr/lib/x86_64-linux-gnu/libgdcmDICT.so.2.8.4)
+   n1: 1579680 0x1BC3B2F8: gdcm::Global::Global() (in /usr/lib/x86_64-linux-gnu/libgdcmDICT.so.2.8.4)
+    n1: 1579680 0x1BC37A9E: ??? (in /usr/lib/x86_64-linux-gnu/libgdcmDICT.so.2.8.4)
+     n1: 1579680 0x4010731: _dl_init (dl-init.c:72)
+      n1: 1579680 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+       n1: 1579680 0x2: ???
+        n1: 1579680 0x1FFEFFFF25: ???
+         n1: 1579680 0x1FFEFFFF2E: ???
+          n1: 1579680 0x1FFEFFFF45: ???
+           n0: 1579680 0x1FFEFFFF49: ???
+ n1: 1511792 0x1BC39C49: gdcm::PrivateDict::LoadDefault() (in /usr/lib/x86_64-linux-gnu/libgdcmDICT.so.2.8.4)
+  n1: 1511792 0x1BC37E00: gdcm::Dicts::LoadDefaults() (in /usr/lib/x86_64-linux-gnu/libgdcmDICT.so.2.8.4)
+   n1: 1511792 0x1BC3B2F8: gdcm::Global::Global() (in /usr/lib/x86_64-linux-gnu/libgdcmDICT.so.2.8.4)
+    n1: 1511792 0x1BC37A9E: ??? (in /usr/lib/x86_64-linux-gnu/libgdcmDICT.so.2.8.4)
+     n1: 1511792 0x4010731: _dl_init (dl-init.c:72)
+      n1: 1511792 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+       n1: 1511792 0x2: ???
+        n1: 1511792 0x1FFEFFFF25: ???
+         n1: 1511792 0x1FFEFFFF2E: ???
+          n1: 1511792 0x1FFEFFFF45: ???
+           n0: 1511792 0x1FFEFFFF49: ???
+ n1: 921600 0x10EB13: RenderableImage::refreshColors(Image) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n2: 921600 0x10F0CF: RenderableImage::getColors(float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+   n1: 921600 0x1102F4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+    n0: 921600 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+   n0: 0 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=4
+#-----------
+time=1330370406
+mem_heap_B=98653793
+mem_heap_extra_B=980255
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=1648906908
+mem_heap_B=131831393
+mem_heap_extra_B=980327
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=1843581999
+mem_heap_B=153917130
+mem_heap_extra_B=980238
+mem_stacks_B=0
+heap_tree=detailed
+n11: 153917130 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 117964800 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 117964800 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n2: 11263756 0x312DDFEA: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n2: 9830523 0x3254B7F5: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+   n2: 9829396 0x32535A5B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+    n1: 7371725 0x32172D6B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+     n3: 7371725 0x32174A80: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+      n1: 3686471 0x10F9FF: setColorBuffer(RenderableImage) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+       n1: 3686471 0x10FB30: initRender(RenderableImage, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+        n1: 3686471 0x10FFD6: init(RenderableImage*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char const*, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+         n0: 3686471 0x10C5CE: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+      n1: 2456383 0x10F8F9: setIndexBuffer(RenderableImage) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+       n1: 2456383 0x10FAF6: initRender(RenderableImage, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+        n1: 2456383 0x10FFD6: init(RenderableImage*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char const*, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+         n0: 2456383 0x10C5CE: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+      n0: 1228871 in 1 place, below massif's threshold (1.00%)
+    n1: 2457671 0x312DF28F: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+     n1: 2457671 0x32172D6B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+      n1: 2457671 0x32174A80: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+       n1: 2457671 0x10F7DF: setVertexBuffer(RenderableImage) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+        n1: 2457671 0x10FABC: initRender(RenderableImage, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+         n1: 2457671 0x10FFD6: init(RenderableImage*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char const*, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+          n0: 2457671 0x10C5CE: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+   n0: 1127 in 1 place, below massif's threshold (1.00%)
+  n0: 1433233 in 194 places, all below massif's threshold (1.00%)
+ n0: 5104069 in 739 places, all below massif's threshold (1.00%)
+ n1: 3686400 0x10E987: RenderableImage::initColors(Image) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n1: 3686400 0x10EE2E: RenderableImage::RenderableImage(cv::VideoCapture) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+   n0: 3686400 0x10C407: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 2457600 0x10C66D: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 2457600 0x10C67C: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n1: 2457600 0x10E7DB: RenderableImage::initVertices() (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n1: 2457600 0x10ED20: RenderableImage::RenderableImage(cv::VideoCapture) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+   n0: 2457600 0x10C407: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n1: 2456312 0x10E8A4: RenderableImage::initIndices() (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n1: 2456312 0x10ED28: RenderableImage::RenderableImage(cv::VideoCapture) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+   n0: 2456312 0x10C407: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n1: 2250455 0x55BC380: cv::fastMalloc(unsigned long) (in /usr/lib/x86_64-linux-gnu/libopencv_core.so.3.2.0)
+  n0: 2250455 in 4 places, all below massif's threshold (1.00%)
+ n1: 2238858 0x312DDE24: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n0: 2238858 in 92 places, all below massif's threshold (1.00%)
+ n1: 1579680 0x1BC39434: gdcm::Dict::LoadDefault() (in /usr/lib/x86_64-linux-gnu/libgdcmDICT.so.2.8.4)
+  n1: 1579680 0x1BC37DF7: gdcm::Dicts::LoadDefaults() (in /usr/lib/x86_64-linux-gnu/libgdcmDICT.so.2.8.4)
+   n1: 1579680 0x1BC3B2F8: gdcm::Global::Global() (in /usr/lib/x86_64-linux-gnu/libgdcmDICT.so.2.8.4)
+    n1: 1579680 0x1BC37A9E: ??? (in /usr/lib/x86_64-linux-gnu/libgdcmDICT.so.2.8.4)
+     n1: 1579680 0x4010731: _dl_init (dl-init.c:72)
+      n1: 1579680 0x40010C8: ??? (in /lib/x86_64-linux-gnu/ld-2.27.so)
+       n1: 1579680 0x2: ???
+        n1: 1579680 0x1FFEFFFF25: ???
+         n1: 1579680 0x1FFEFFFF2E: ???
+          n1: 1579680 0x1FFEFFFF45: ???
+           n0: 1579680 0x1FFEFFFF49: ???
+#-----------
+snapshot=7
+#-----------
+time=2145831257
+mem_heap_B=183440993
+mem_heap_extra_B=980455
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=2543925226
+mem_heap_B=223036698
+mem_heap_extra_B=980334
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=2792431105
+mem_heap_B=248841498
+mem_heap_extra_B=980374
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=10
+#-----------
+time=3050014992
+mem_heap_B=274646306
+mem_heap_extra_B=980462
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=3442371762
+mem_heap_B=319805130
+mem_heap_extra_B=980582
+mem_stacks_B=0
+heap_tree=detailed
+n4: 319805130 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 283852800 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 283852800 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 21002174 in 746 places, all below massif's threshold (1.00%)
+ n2: 11263756 0x312DDFEA: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n2: 9830523 0x3254B7F5: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+   n2: 9829396 0x32535A5B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+    n1: 7371725 0x32172D6B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+     n2: 7371725 0x32174A80: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+      n1: 3686471 0x10F9FF: setColorBuffer(RenderableImage) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+       n1: 3686471 0x10FB30: initRender(RenderableImage, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+        n1: 3686471 0x10FFD6: init(RenderableImage*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char const*, float, float, float) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+         n0: 3686471 0x10C5CE: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+      n0: 3685254 in 2 places, all below massif's threshold (1.00%)
+    n0: 2457671 in 1 place, below massif's threshold (1.00%)
+   n0: 1127 in 1 place, below massif's threshold (1.00%)
+  n0: 1433233 in 194 places, all below massif's threshold (1.00%)
+ n1: 3686400 0x10E987: RenderableImage::initColors(Image) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n1: 3686400 0x10EE2E: RenderableImage::RenderableImage(cv::VideoCapture) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+   n0: 3686400 0x10C407: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+#-----------
+snapshot=12
+#-----------
+time=3725454621
+mem_heap_B=344688114
+mem_heap_extra_B=980606
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=3904510413
+mem_heap_B=367728330
+mem_heap_extra_B=980718
+mem_stacks_B=0
+heap_tree=detailed
+n3: 367728330 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 331776000 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 331776000 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 24688574 in 747 places, all below massif's threshold (1.00%)
+ n2: 11263756 0x312DDFEA: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n2: 9830523 0x3254B7F5: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+   n2: 9829396 0x32535A5B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+    n1: 7371725 0x32172D6B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+     n1: 7371725 0x32174A80: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+      n0: 7371725 in 3 places, all below massif's threshold (1.00%)
+    n0: 2457671 in 1 place, below massif's threshold (1.00%)
+   n0: 1127 in 1 place, below massif's threshold (1.00%)
+  n0: 1433233 in 194 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=14
+#-----------
+time=4152956080
+mem_heap_B=393533130
+mem_heap_extra_B=980774
+mem_stacks_B=0
+heap_tree=detailed
+n3: 393533130 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 357580800 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 357580800 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 24688574 in 747 places, all below massif's threshold (1.00%)
+ n2: 11263756 0x312DDFEA: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n2: 9830523 0x3254B7F5: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+   n2: 9829396 0x32535A5B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+    n1: 7371725 0x32172D6B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+     n1: 7371725 0x32174A80: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+      n0: 7371725 in 3 places, all below massif's threshold (1.00%)
+    n0: 2457671 in 1 place, below massif's threshold (1.00%)
+   n0: 1127 in 1 place, below massif's threshold (1.00%)
+  n0: 1433233 in 194 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=15
+#-----------
+time=4419731158
+mem_heap_B=419370593
+mem_heap_extra_B=980983
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=4720787462
+mem_heap_B=452515738
+mem_heap_extra_B=980894
+mem_stacks_B=0
+heap_tree=detailed
+n3: 452515738 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 416563200 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 416563200 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 24688782 in 747 places, all below massif's threshold (1.00%)
+ n2: 11263756 0x312DDFEA: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n2: 9830523 0x3254B7F5: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+   n2: 9829396 0x32535A5B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+    n1: 7371725 0x32172D6B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+     n1: 7371725 0x32174A80: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+      n0: 7371725 in 3 places, all below massif's threshold (1.00%)
+    n0: 2457671 in 1 place, below massif's threshold (1.00%)
+   n0: 1127 in 1 place, below massif's threshold (1.00%)
+  n0: 1433233 in 194 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=17
+#-----------
+time=4933637855
+mem_heap_B=474633930
+mem_heap_extra_B=980934
+mem_stacks_B=0
+heap_tree=detailed
+n3: 474633930 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 438681600 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 438681600 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 24688574 in 747 places, all below massif's threshold (1.00%)
+ n2: 11263756 0x312DDFEA: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n2: 9830523 0x3254B7F5: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+   n2: 9829396 0x32535A5B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+    n1: 7371725 0x32172D6B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+     n1: 7371725 0x32174A80: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+      n0: 7371725 in 3 places, all below massif's threshold (1.00%)
+    n0: 2457671 in 1 place, below massif's threshold (1.00%)
+   n0: 1127 in 1 place, below massif's threshold (1.00%)
+  n0: 1433233 in 194 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=18
+#-----------
+time=5200138275
+mem_heap_B=500471601
+mem_heap_extra_B=981183
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=19
+#-----------
+time=5484073961
+mem_heap_B=529962593
+mem_heap_extra_B=981239
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=5643413376
+mem_heap_B=548361930
+mem_heap_extra_B=981110
+mem_stacks_B=0
+heap_tree=detailed
+n3: 548361930 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 512409600 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 512409600 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 24688574 in 747 places, all below massif's threshold (1.00%)
+ n2: 11263756 0x312DDFEA: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n2: 9830523 0x3254B7F5: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+   n2: 9829396 0x32535A5B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+    n1: 7371725 0x32172D6B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+     n1: 7371725 0x32174A80: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+      n0: 7371725 in 3 places, all below massif's threshold (1.00%)
+    n0: 2457671 in 1 place, below massif's threshold (1.00%)
+   n0: 1127 in 1 place, below massif's threshold (1.00%)
+  n0: 1433233 in 194 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=21
+#-----------
+time=5998486620
+mem_heap_B=585225930
+mem_heap_extra_B=981190
+mem_stacks_B=0
+heap_tree=detailed
+n3: 585225930 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 549273600 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 549273600 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 24688574 in 747 places, all below massif's threshold (1.00%)
+ n2: 11263756 0x312DDFEA: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n2: 9830523 0x3254B7F5: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+   n2: 9829396 0x32535A5B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+    n1: 7371725 0x32172D6B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+     n1: 7371725 0x32174A80: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+      n0: 7371725 in 3 places, all below massif's threshold (1.00%)
+    n0: 2457671 in 1 place, below massif's threshold (1.00%)
+   n0: 1127 in 1 place, below massif's threshold (1.00%)
+  n0: 1433233 in 194 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=22
+#-----------
+time=6281206494
+mem_heap_B=610108706
+mem_heap_extra_B=981206
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=6424621544
+mem_heap_B=629462730
+mem_heap_extra_B=981270
+mem_stacks_B=0
+heap_tree=detailed
+n3: 629462730 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 593510400 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 593510400 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 24688574 in 747 places, all below massif's threshold (1.00%)
+ n2: 11263756 0x312DDFEA: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n2: 9830523 0x3254B7F5: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+   n2: 9829396 0x32535A5B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+    n1: 7371725 0x32172D6B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+     n1: 7371725 0x32174A80: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+      n0: 7371725 in 3 places, all below massif's threshold (1.00%)
+    n0: 2457671 in 1 place, below massif's threshold (1.00%)
+   n0: 1127 in 1 place, below massif's threshold (1.00%)
+  n0: 1433233 in 194 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=24
+#-----------
+time=6707282857
+mem_heap_B=654345714
+mem_heap_extra_B=981278
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=6850679600
+mem_heap_B=673699530
+mem_heap_extra_B=981382
+mem_stacks_B=0
+heap_tree=detailed
+n3: 673699530 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 637747200 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 637747200 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 24688574 in 747 places, all below massif's threshold (1.00%)
+ n2: 11263756 0x312DDFEA: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n2: 9830523 0x3254B7F5: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+   n2: 9829396 0x32535A5B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+    n1: 7371725 0x32172D6B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+     n1: 7371725 0x32174A80: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+      n0: 7371725 in 3 places, all below massif's threshold (1.00%)
+    n0: 2457671 in 1 place, below massif's threshold (1.00%)
+   n0: 1127 in 1 place, below massif's threshold (1.00%)
+  n0: 1433233 in 194 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=26
+#-----------
+time=7133253610
+mem_heap_B=698582306
+mem_heap_extra_B=981398
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=7347383432
+mem_heap_B=725309130
+mem_heap_extra_B=981494
+mem_stacks_B=0
+heap_tree=detailed
+n3: 725309130 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 689356800 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 689356800 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 24688574 in 747 places, all below massif's threshold (1.00%)
+ n2: 11263756 0x312DDFEA: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n2: 9830523 0x3254B7F5: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+   n2: 9829396 0x32535A5B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+    n1: 7371725 0x32172D6B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+     n1: 7371725 0x32174A80: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+      n0: 7371725 in 3 places, all below massif's threshold (1.00%)
+    n0: 2457671 in 1 place, below massif's threshold (1.00%)
+   n0: 1127 in 1 place, below massif's threshold (1.00%)
+  n0: 1433233 in 194 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=28
+#-----------
+time=7595696291
+mem_heap_B=751113930
+mem_heap_extra_B=981550
+mem_stacks_B=0
+heap_tree=detailed
+n3: 751113930 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 715161600 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 715161600 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 24688574 in 747 places, all below massif's threshold (1.00%)
+ n2: 11263756 0x312DDFEA: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n2: 9830523 0x3254B7F5: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+   n1: 9829396 0x32535A5B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+    n0: 9829396 in 2 places, all below massif's threshold (1.00%)
+   n0: 1127 in 1 place, below massif's threshold (1.00%)
+  n0: 1433233 in 194 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=29
+#-----------
+time=7897546874
+mem_heap_B=780637793
+mem_heap_extra_B=981751
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=8110298633
+mem_heap_B=802756193
+mem_heap_extra_B=981815
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=8340515619
+mem_heap_B=828528330
+mem_heap_extra_B=981718
+mem_stacks_B=0
+heap_tree=detailed
+n3: 828528330 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 792576000 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 792576000 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 24688574 in 747 places, all below massif's threshold (1.00%)
+ n2: 11263756 0x312DDFEA: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n2: 9830523 0x3254B7F5: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+   n1: 9829396 0x32535A5B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+    n0: 9829396 in 2 places, all below massif's threshold (1.00%)
+   n0: 1127 in 1 place, below massif's threshold (1.00%)
+  n0: 1433233 in 194 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=32
+#-----------
+time=8553416091
+mem_heap_B=850646730
+mem_heap_extra_B=981766
+mem_stacks_B=0
+heap_tree=detailed
+n3: 850646730 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 814694400 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 814694400 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 24688574 in 747 places, all below massif's threshold (1.00%)
+ n2: 11263756 0x312DDFEA: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n2: 9830523 0x3254B7F5: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+   n1: 9829396 0x32535A5B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+    n0: 9829396 in 2 places, all below massif's threshold (1.00%)
+   n0: 1127 in 1 place, below massif's threshold (1.00%)
+  n0: 1433233 in 194 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=33
+#-----------
+time=8766326658
+mem_heap_B=872765130
+mem_heap_extra_B=981814
+mem_stacks_B=0
+heap_tree=detailed
+n3: 872765130 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 836812800 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 836812800 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 24688574 in 747 places, all below massif's threshold (1.00%)
+ n2: 11263756 0x312DDFEA: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n2: 9830523 0x3254B7F5: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+   n1: 9829396 0x32535A5B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+    n0: 9829396 in 2 places, all below massif's threshold (1.00%)
+   n0: 1127 in 1 place, below massif's threshold (1.00%)
+  n0: 1433233 in 194 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=34
+#-----------
+time=9174705034
+mem_heap_B=913348401
+mem_heap_extra_B=982079
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=9494024744
+mem_heap_B=946525793
+mem_heap_extra_B=982127
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=9724323555
+mem_heap_B=972297930
+mem_heap_extra_B=982030
+mem_stacks_B=0
+heap_tree=detailed
+n3: 972297930 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 936345600 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 936345600 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 24688574 in 747 places, all below massif's threshold (1.00%)
+ n2: 11263756 0x312DDFEA: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n2: 9830523 0x3254B7F5: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+   n1: 9829396 0x32535A5B: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.418.56)
+    n0: 9829396 in 2 places, all below massif's threshold (1.00%)
+   n0: 1127 in 1 place, below massif's threshold (1.00%)
+  n0: 1433233 in 194 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=37
+#-----------
+time=9937238213
+mem_heap_B=994416330
+mem_heap_extra_B=982078
+mem_stacks_B=0
+heap_tree=detailed
+n3: 994416330 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 958464000 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 958464000 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 24688574 in 747 places, all below massif's threshold (1.00%)
+ n1: 11263756 0x312DDFEA: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n0: 11263756 in 195 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=38
+#-----------
+time=10150171786
+mem_heap_B=1016534490
+mem_heap_extra_B=982070
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=10469539926
+mem_heap_B=1049712090
+mem_heap_extra_B=982142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=10682461794
+mem_heap_B=1071830938
+mem_heap_extra_B=982254
+mem_stacks_B=0
+heap_tree=detailed
+n3: 1071830938 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1035878400 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1035878400 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 24688782 in 747 places, all below massif's threshold (1.00%)
+ n1: 11263756 0x312DDFEA: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n0: 11263756 in 195 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=41
+#-----------
+time=11001853029
+mem_heap_B=1105008234
+mem_heap_extra_B=982286
+mem_stacks_B=0
+heap_tree=detailed
+n3: 1105008234 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1069056000 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1069056000 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 24688478 in 747 places, all below massif's threshold (1.00%)
+ n1: 11263756 0x312DDFEA: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.418.56)
+  n0: 11263756 in 195 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=42
+#-----------
+time=11249993104
+mem_heap_B=1130813082
+mem_heap_extra_B=982366
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1130813082 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1094860800 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1094860800 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952282 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=43
+#-----------
+time=11532729939
+mem_heap_B=1160304282
+mem_heap_extra_B=982430
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1160304282 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1124352000 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1124352000 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952282 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=44
+#-----------
+time=11954731259
+mem_heap_B=1204541082
+mem_heap_extra_B=982526
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1204541082 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1168588800 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1168588800 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952282 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=45
+#-----------
+time=12237454029
+mem_heap_B=1234032490
+mem_heap_extra_B=982598
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1234032490 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1198080000 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1198080000 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952490 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=46
+#-----------
+time=12503458113
+mem_heap_B=1259869745
+mem_heap_extra_B=982783
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=12768993268
+mem_heap_B=1289363544
+mem_heap_extra_B=982880
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=13052782564
+mem_heap_B=1318819242
+mem_heap_extra_B=982718
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=49
+#-----------
+time=13230147566
+mem_heap_B=1337251690
+mem_heap_extra_B=982806
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1337251690 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1301299200 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1301299200 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952490 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=50
+#-----------
+time=13371689167
+mem_heap_B=1351997082
+mem_heap_extra_B=982846
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1351997082 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1316044800 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1316044800 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952282 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=51
+#-----------
+time=13513124870
+mem_heap_B=1366742682
+mem_heap_extra_B=982862
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1366742682 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1330790400 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1330790400 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952282 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=52
+#-----------
+time=13654340070
+mem_heap_B=1381488282
+mem_heap_extra_B=982910
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1381488282 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1345536000 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1345536000 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952282 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=53
+#-----------
+time=13795039385
+mem_heap_B=1396233882
+mem_heap_extra_B=982942
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1396233882 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1360281600 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1360281600 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952282 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=54
+#-----------
+time=13935623631
+mem_heap_B=1410979482
+mem_heap_extra_B=982974
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1410979482 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1375027200 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1375027200 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952282 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=55
+#-----------
+time=14076315047
+mem_heap_B=1425725082
+mem_heap_extra_B=983006
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1425725082 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1389772800 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1389772800 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952282 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=56
+#-----------
+time=14217214688
+mem_heap_B=1440470890
+mem_heap_extra_B=983030
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1440470890 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1404518400 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1404518400 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952490 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=57
+#-----------
+time=14358668805
+mem_heap_B=1455216282
+mem_heap_extra_B=983070
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1455216282 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1419264000 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1419264000 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952282 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=58
+#-----------
+time=14500367283
+mem_heap_B=1469961882
+mem_heap_extra_B=983102
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1469961882 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1434009600 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1434009600 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952282 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=59
+#-----------
+time=14642206232
+mem_heap_B=1484707482
+mem_heap_extra_B=983134
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1484707482 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1448755200 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1448755200 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952282 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=60
+#-----------
+time=14801802874
+mem_heap_B=1499485953
+mem_heap_extra_B=983343
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=61
+#-----------
+time=14819158634
+mem_heap_B=1503139482
+mem_heap_extra_B=983158
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1503139482 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1467187200 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1467187200 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952282 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=62
+#-----------
+time=14978419481
+mem_heap_B=1517917745
+mem_heap_extra_B=983359
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=63
+#-----------
+time=14995773987
+mem_heap_B=1521571482
+mem_heap_extra_B=983198
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1521571482 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1485619200 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1485619200 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952282 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=64
+#-----------
+time=15154813890
+mem_heap_B=1536349745
+mem_heap_extra_B=983383
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=65
+#-----------
+time=15172168396
+mem_heap_B=1540003482
+mem_heap_extra_B=983238
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1540003482 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1504051200 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1504051200 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952282 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=66
+#-----------
+time=15330714009
+mem_heap_B=1554781745
+mem_heap_extra_B=983439
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=67
+#-----------
+time=15348068517
+mem_heap_B=1558435482
+mem_heap_extra_B=983294
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1558435482 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1522483200 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1522483200 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952282 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=68
+#-----------
+time=15506650714
+mem_heap_B=1573213745
+mem_heap_extra_B=983495
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=69
+#-----------
+time=15523998299
+mem_heap_B=1576867482
+mem_heap_extra_B=983318
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1576867482 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1540915200 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1540915200 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952282 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=70
+#-----------
+time=15682741987
+mem_heap_B=1591645745
+mem_heap_extra_B=983519
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=71
+#-----------
+time=15700089412
+mem_heap_B=1595299482
+mem_heap_extra_B=983374
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1595299482 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1559347200 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1559347200 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952282 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=72
+#-----------
+time=15859026732
+mem_heap_B=1610077745
+mem_heap_extra_B=983559
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=73
+#-----------
+time=15876374113
+mem_heap_B=1613731482
+mem_heap_extra_B=983414
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1613731482 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1577779200 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1577779200 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952282 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=74
+#-----------
+time=16034800604
+mem_heap_B=1628509745
+mem_heap_extra_B=983599
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=75
+#-----------
+time=16052155656
+mem_heap_B=1632163482
+mem_heap_extra_B=983454
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1632163482 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1596211200 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1596211200 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952282 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=76
+#-----------
+time=16211225813
+mem_heap_B=1646941745
+mem_heap_extra_B=983639
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=77
+#-----------
+time=16228580671
+mem_heap_B=1650595482
+mem_heap_extra_B=983478
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1650595482 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1614643200 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1614643200 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952282 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=78
+#-----------
+time=16388874639
+mem_heap_B=1665373745
+mem_heap_extra_B=983663
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=79
+#-----------
+time=16406229145
+mem_heap_B=1669027482
+mem_heap_extra_B=983518
+mem_stacks_B=0
+heap_tree=detailed
+n2: 1669027482 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1633075200 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1633075200 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952282 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=80
+#-----------
+time=16566808523
+mem_heap_B=1683805745
+mem_heap_extra_B=983719
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=81
+#-----------
+time=16584166238
+mem_heap_B=1687459482
+mem_heap_extra_B=983574
+mem_stacks_B=0
+heap_tree=peak
+n2: 1687459482 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1651507200 0x1102E4: reRender(GLFWwindow*, RenderableImage, float*) (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+  n0: 1651507200 0x10C6D8: main (in /home/ghaetinger/Desktop/KelvinletsImageGL/kelvin)
+ n0: 35952282 in 748 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=82
+#-----------
+time=16744839390
+mem_heap_B=1702237745
+mem_heap_extra_B=983759
+mem_stacks_B=0
+heap_tree=empty

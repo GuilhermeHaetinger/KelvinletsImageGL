@@ -1,4 +1,3 @@
-
 #include "../include/glImageAbstraction.h"
 
 vec2 initialPos;
@@ -327,7 +326,7 @@ void reRender(GLFWwindow * window, RenderableImage rend, GLfloat * vertices)
 
   glEnableVertexAttribArray(1);
 
-/*
+
 	GLfloat * positions = (GLfloat *) malloc(rend.getNumOfVertices() * sizeof(GLfloat));
         for(int i = 0; i < rend.getNumOfVertices(); i++)
         {
@@ -351,9 +350,9 @@ void reRender(GLFWwindow * window, RenderableImage rend, GLfloat * vertices)
         glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, tbo);
 
         glBeginTransformFeedback(GL_TRIANGLES);
-*/
+
         glDrawElements(GL_TRIANGLE_STRIP, rend.getNumOfIndices(), GL_UNSIGNED_INT, nullptr);
-/*
+
         glEndTransformFeedback();
 
         glFlush();
@@ -361,7 +360,7 @@ void reRender(GLFWwindow * window, RenderableImage rend, GLfloat * vertices)
 	GLfloat feed[sz];
 //	cout << sizeof(sz) << endl;
         glGetBufferSubData(GL_TRANSFORM_FEEDBACK_BUFFER, 0, sizeof(feed), feed);
-	
+/*	
 	GLfloat* ve = (GLfloat*)malloc(rend.getNumOfVertices() * 2 * sizeof(GLfloat));
 	rend.getVertices(ve);
 	for(int i = 0; i < sz; i+=3)
@@ -381,8 +380,8 @@ void reRender(GLFWwindow * window, RenderableImage rend, GLfloat * vertices)
 */  
   glfwSwapBuffers(window);
   glfwPollEvents();
-  //free(colors);
- // free(positions);
+  free(colors);
+  free(positions);
   //free(ve);
 }
 
