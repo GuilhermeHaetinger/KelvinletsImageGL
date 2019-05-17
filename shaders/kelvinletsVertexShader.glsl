@@ -2,6 +2,7 @@
 
 layout(location = 0) in vec4 position;
 layout(location = 1) in vec3 vertexColor;
+layout(location = 2) in float idx;
 
 uniform float a;
 uniform float b;
@@ -17,6 +18,7 @@ uniform int reset;
 uniform int gpu;
 
 out vec3 fragmentColor;
+out vec3 nPos;
 
 float PI = 3.1415926535897932384626433832795;
 
@@ -103,7 +105,9 @@ void main()
         vec2 pos = grab();
         pos = normalizer(pos);
         gl_Position = vec4(pos[0], pos[1], 0.0f, 1.0f);
+        nPos = vec3(pos[0], pos[1], idx);
     }else{
         gl_Position = position;
+	nPos = vec3(position[0], position[1], idx);
     }
 };

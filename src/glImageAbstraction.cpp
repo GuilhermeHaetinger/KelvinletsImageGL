@@ -11,6 +11,8 @@ bool gpu;
 int shader;
 int width;
 int height;
+GLuint idxb;
+bool newVtx;
 
 void initGlfw()
 {
@@ -60,6 +62,7 @@ static void clickButtonHandler(GLFWwindow * window, int button, int action, int 
           nextPos = vec2(x, height - 1 - y);
         }else if(action == GLFW_RELEASE)
         {
+	  newVtx = true;
           reset = true;
           button_down = false;
         }
@@ -179,6 +182,24 @@ void initRender(RenderableImage rend,
   setIndexBuffer(rend);
   setColorBuffer(rend);
 
+////
+	GLfloat * positions = (GLfloat *) malloc(rend.getNumOfVertices() * sizeof(GLfloat));
+	for(int i = 0; i < rend.getNumOfVertices(); i++)
+	{
+		positions[i] = i;
+	}
+	glGenBuffers(1, &idxb);	
+  	glBindBuffer(GL_ARRAY_BUFFER, idxb);
+  	glBufferData(GL_ARRAY_BUFFER,
+       		rend.getNumOfVertices() * sizeof(GLfloat),
+               	positions,
+               	GL_STATIC_DRAW);
+
+  	glEnableVertexAttribArray(2);
+  	glVertexAttribPointer(2, 1, GL_FLOAT, GL_FALSE, sizeof(GLfloat), 0);
+  	free(positions);
+
+///
   string vertexShader = ParseShader(pathToVertexShader);
   string fragmentShader = ParseShader(pathToFragmentShader);
 
@@ -211,7 +232,35 @@ void initRender(RenderableImage rend,
   glUniform1i(button_down_location, button_down);
   glUniform1i(reset_location, reset);
   glUniform1i(gpu_location, gpu);
-  
+
+//////
+	
+/*      
+        GLuint tbo;
+        glGenBuffers(1, &tbo);
+        glBindBuffer(GL_ARRAY_BUFFER, tbo);
+        glBufferData(GL_ARRAY_BUFFER, rend.getNumOfVertices() * 3 * sizeof(GLfloat), nullptr, GL_STATIC_READ);
+
+	glEnable(GL_RASTERIZER_DISCARD);
+
+	glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, tbo);
+
+        glBeginTransformFeedback(GL_TRIANGLES);
+
+        glDrawElements(GL_TRIANGLE_STRIP, rend.getNumOfIndices(), GL_UNSIGNED_INT, nullptr);
+
+        glEndTransformFeedback();
+
+        glFlush();
+
+	GLfloat feed[rend.getNumOfVertices() *  3];	
+	glGetBufferSubData(GL_TRANSFORM_FEEDBACK_BUFFER, 0, sizeof(feed), feed);
+
+	for(int i = 0; i < rend.getNumOfVertices() * 3; i+=3)
+	{
+		cout << feed[i] << "    " << feed[i+1] << "    " << feed[i+2] << endl;
+	}
+	*/
 }
 
 GLFWwindow * init(RenderableImage * rend,
@@ -225,6 +274,7 @@ GLFWwindow * init(RenderableImage * rend,
   retard = true;
   brushSize = 100.;
   gpu = true;
+  newVtx = false;
   height = rend->getHeight();
   width = rend->getWidth();
   GLFWwindow * window;
@@ -276,13 +326,64 @@ void reRender(GLFWwindow * window, RenderableImage rend, GLfloat * vertices)
                   colors);
 
   glEnableVertexAttribArray(1);
-  glDrawElements(GL_TRIANGLE_STRIP,
-                 rend.getNumOfIndices(),
-                 GL_UNSIGNED_INT, nullptr);
 
+/*
+	GLfloat * positions = (GLfloat *) malloc(rend.getNumOfVertices() * sizeof(GLfloat));
+        for(int i = 0; i < rend.getNumOfVertices(); i++)
+        {
+                positions[i] = i;
+ 	}
+	glBindBuffer(GL_ARRAY_BUFFER, idxb);
+  	glBufferSubData(GL_ARRAY_BUFFER, 0,
+                  rend.getNumOfVertices() * sizeof(GLfloat),
+                  positions);
+
+	glEnableVertexAttribArray(2);
+
+	int sz = ((width - 1) * 2) * (height - 1) * 3 * 3;
+//	cout << sz << "   " << rend.getNumOfIndices() << endl;
+	
+        GLuint tbo;
+        glGenBuffers(1, &tbo);
+        glBindBuffer(GL_ARRAY_BUFFER, tbo);
+        glBufferData(GL_ARRAY_BUFFER, sz * sizeof(GLfloat), nullptr, GL_STATIC_READ);
+
+        glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, 0, tbo);
+
+        glBeginTransformFeedback(GL_TRIANGLES);
+*/
+        glDrawElements(GL_TRIANGLE_STRIP, rend.getNumOfIndices(), GL_UNSIGNED_INT, nullptr);
+/*
+        glEndTransformFeedback();
+
+        glFlush();
+
+	GLfloat feed[sz];
+//	cout << sizeof(sz) << endl;
+        glGetBufferSubData(GL_TRANSFORM_FEEDBACK_BUFFER, 0, sizeof(feed), feed);
+	
+	GLfloat* ve = (GLfloat*)malloc(rend.getNumOfVertices() * 2 * sizeof(GLfloat));
+	rend.getVertices(ve);
+	for(int i = 0; i < sz; i+=3)
+	{
+		ve[(int)feed[i+2]*2] = feed[i];
+		ve[(int)feed[i+2]*2 + 1] = feed[i+1];
+	}	
+
+	
+	if(newVtx)
+	{
+		newVtx = false;
+		rend.setVertices(ve);	
+	}
+//
+
+*/  
   glfwSwapBuffers(window);
   glfwPollEvents();
-  free(colors);
+  //free(colors);
+ // free(positions);
+  //free(ve);
 }
 
 void feedbackVariables(vec2 * initPosition, vec2 * nextPosition, bool * btn_down, bool * ret, float * brSize, bool * gpuProcessing)

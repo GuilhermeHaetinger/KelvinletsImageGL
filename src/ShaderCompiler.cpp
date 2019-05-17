@@ -51,6 +51,14 @@ unsigned int CreateShader(const string& vertexShader,
 
     glAttachShader(program, vs);
     glAttachShader(program, fs);
+
+
+    const GLchar* feedbackVaryings[] = { "nPos" };
+    glTransformFeedbackVaryings(program, 1, feedbackVaryings, GL_INTERLEAVED_ATTRIBS);
+
+
+    glAttachShader(program, fs);
+
     glLinkProgram(program);
     glValidateProgram(program);
 
