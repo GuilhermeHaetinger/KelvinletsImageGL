@@ -15,7 +15,7 @@ void checkArgumentConsistency(int argc)
   if (argc != 4)
   {
     cout << "INPUT FORMAT :"
-            " ./kelvin [image filepath] [poisson ratio] [elastic shear modulus]"
+            " ./kelvin [video stream index] [poisson ratio] [elastic shear modulus]"
          << endl;
     exit(1);
   }
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
   checkArgumentConsistency(argc);
 
   // Create a VideoCapture object and use camera to capture the video
-  VideoCapture cap(0); 
+  VideoCapture cap(atoi(argv[1]));
  
   // Check if camera opened successfully
   if(!cap.isOpened())

@@ -22,8 +22,8 @@ vec3 Image::getColor(int x, int y)
   return vec3(R, G, B);
 }
 
-int Image::getWidth(){return this->src.get(CV_CAP_PROP_FRAME_WIDTH);}
-int Image::getHeight(){return this->src.get(CV_CAP_PROP_FRAME_HEIGHT);}
+int Image::getWidth(){return this->src.get(cv::CAP_PROP_FRAME_WIDTH);}
+int Image::getHeight(){return this->src.get(cv::CAP_PROP_FRAME_HEIGHT);}
 
 Mat Image::getMat(){
   this->src >> this->frame;

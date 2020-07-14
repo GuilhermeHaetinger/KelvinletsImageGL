@@ -1,4 +1,3 @@
-
 #include "../include/glImageAbstraction.h"
 
 vec2 initialPos;
@@ -92,7 +91,15 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
     {
           gpu = !gpu;
           updateVariableDescr();
-    }
+    } else if (key == GLFW_KEY_S && action == GLFW_PRESS) {
+			BYTE* pixels = new BYTE[3 * width * height];
+			glReadPixels(0, 0, width, height, GL_BGR, GL_UNSIGNED_BYTE, pixels);
+			FIBITMAP* image = FreeImage_ConvertFromRawBits(pixels, width, height, 3 * width, 24, 0x0000FF, 0xFF0000, 0x00FF00, false);
+			char * filename = "./results/result_warp.bmp";
+			FreeImage_Save(FIF_BMP, image, filename, 0);
+			FreeImage_Unload(image);
+			delete [] pixels;
+	}
 }
 
 void setHandlers(GLFWwindow * window)
