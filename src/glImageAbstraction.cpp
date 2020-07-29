@@ -56,7 +56,10 @@ static void clickButtonHandler(GLFWwindow * window, int button, int action, int 
           double x, y;
           glfwGetCursorPos(window, &x, &y);
           initialPos = vec2(x, height - 1 - y);
-          nextPos = vec2(x, height - 1 - y);
+		  // TODO: COMMENT THIS
+		  initialPos = vec2(200, 300);
+		  // TODO: UNCOMMENT THIS
+          // nextPos = vec2(x, height - 1 - y);
         }else if(action == GLFW_RELEASE)
         {
           reset = true;
@@ -76,6 +79,8 @@ static void cursorMovementHandler(GLFWwindow * window, double xpos, double ypos)
   if(button_down)
     {
       nextPos = vec2(xpos, height - 1 - ypos);
+	  // TODO: REMOVE THIS
+	  nextPos = vec2(400, 200);
     }
 }
 
